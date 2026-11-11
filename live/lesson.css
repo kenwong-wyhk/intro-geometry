@@ -1,0 +1,100 @@
+/* Styles shared by the live lessons of this site (after live/live.css). */
+:root {
+  --gold: #b96e2b; --rule-grey: #808285; --blue-tint: #eef3fa; --blue-tint-2: #dbe6f4;
+  /* corresponding-part colours, as on the reading site: lines and fills only, never text */
+  --c1: var(--blue); --c2: var(--red); --c3: var(--gold);
+  /* the band behind the current line: each pair colour at 20% on white; grey for mixed */
+  --band-1: #ccdaeb; --band-2: #f7cccf; --band-3: #f1e2d5; --band-mix: #ececed;
+  --font-body: var(--font-sans);
+}
+.katex { font-size: 1.08em; }
+/* a short piece of maths never breaks inside itself ("∠BAC =" / "35°"); the line breaks around it */
+.scene .katex { white-space: nowrap; }
+.nobr { white-space: nowrap; }.foot .where { font-size: 1rem; font-weight: 400; color: var(--ink-muted); letter-spacing: .04em; white-space: nowrap; }
+
+/* Figures drawn by the site's own figure engine (js/geom.js) */
+.fig { display: block; width: 100%; height: auto; margin: 0 auto; max-width: none !important; }
+.fig .seg { stroke: var(--ink); stroke-width: 1.6; fill: none; stroke-linecap: round; }
+.fig .poly-fill { fill: none; }
+.fig .lbl { font-family: "Times New Roman", Times, serif; font-style: italic; font-size: 15px; fill: var(--ink); text-anchor: middle; dominant-baseline: central; }
+.fig .txt { font-family: var(--font-sans); font-weight: 400; font-size: 12px; fill: var(--ink); text-anchor: middle; dominant-baseline: central; }
+.fig .txt.var { font-family: "Times New Roman", Times, serif; font-style: italic; font-size: 14px; }
+.fig .mark { fill: none; stroke-width: 1.5; }
+.fig .dot { fill: var(--ink); }
+.fig .tag { font-family: var(--font-display); font-size: 14px; fill: var(--blue); text-anchor: middle; dominant-baseline: central; }
+.fig .hl { opacity: .28; }
+.fig .hl-line { stroke-width: 10; stroke-linecap: round; fill: none; }
+.fig g.tri-g { transition: transform 1s var(--ease); }
+.split-fig .lbl.own, .split-fig .lbl.joined { transition: opacity .4s; }
+.split-fig .lbl.own { opacity: 0; }
+.split-fig.apart .lbl.own { opacity: 1; transition-delay: .5s; }
+.split-fig.apart .lbl.joined { opacity: 0; }
+.figbox { min-width: 0; }
+.figbox .fig { max-height: 58vh; }
+.figbox.small .fig { max-height: 40vh; }
+.layer { display: grid; }
+.layer > * { grid-area: 1 / 1; }
+
+/* Two columns: figure and words */
+.pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3.5rem; align-items: center; }
+.pair.wide-fig { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+.pair.wide-proof { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
+.tight .proof-group { font-size: 1.25rem; }
+.tight table.proof td { padding-top: .1rem; padding-bottom: .1rem; }
+.tight .figbox .fig { max-height: 40vh; }
+.tight .stack { gap: .8rem; }
+.tight .q, .rows.compact .q { font-size: 1.6rem; }
+.q { font-size: 1.75rem; line-height: 1.4; margin: 0; }
+.stack { display: flex; flex-direction: column; gap: 1.2rem; }
+.rows .row:first-child { border-top: 0.07rem solid var(--frame); }
+/* task rows beside a figure, where space is short */
+.rows.compact .row { padding: .7rem 0; grid-template-columns: 9rem 1fr; gap: 1.4rem; }
+.rows.compact .btn { font-size: 1.2rem; padding: .35rem .9rem; }
+
+/* Proof lines (built by the site's proofTable, so the equals signs align as on the reading site) */
+.proof-group { font-size: 1.45rem; }
+table.proof { border-collapse: collapse; width: auto; font-size: inherit; font-variant-numeric: normal; }
+table.proof td { padding: .2rem .5rem; border: 0; text-align: left; vertical-align: middle; }
+table.proof td.s { white-space: nowrap; }
+table.proof td.s-l { text-align: right; padding-right: 0; }
+table.proof td.s-r { padding-left: .28em; }
+table.proof td.r { border-left: 0.07rem solid var(--ink); font-size: 1.15rem; font-weight: 400; min-width: 10em; padding-left: .9rem; white-space: nowrap; }
+table.proof tr.text td { padding-top: .7rem; font-weight: 400; }
+table.proof tr[data-step] { transform: none; }
+/* the current line takes the colour of what it lights on the figure */
+table.proof tr.now td { background: var(--band-mix); }
+table.proof tr.now[data-c="1"] td { background: var(--band-1); }
+table.proof tr.now[data-c="2"] td { background: var(--band-2); }
+table.proof tr.now[data-c="3"] td { background: var(--band-3); }
+/* a line of text that lights the figure (litFigure) gets the same band */
+.lit { padding: .15rem .6rem; margin-left: -.6rem; transition: background .4s; }
+.lit.now { background: var(--band-mix); }
+.lit.now[data-c="1"] { background: var(--band-1); }
+.lit.now[data-c="2"] { background: var(--band-2); }
+.lit.now[data-c="3"] { background: var(--band-3); }
+
+/* Answer blanks and option buttons */
+.blank { display: inline-block; width: 4.2em; border-bottom: 0.1rem solid var(--ink); margin: 0 .2em; vertical-align: -0.2em; }
+.fills { display: grid; grid-template-columns: repeat(3, auto); gap: .6rem 2.4rem; justify-content: start; font-size: 1.6rem; margin-top: .6rem; }
+.btn .opt { font-family: var(--font-display); margin-right: .6rem; }
+.choice.opts .btn { font-size: 1.4rem; padding: .4rem 1.1rem; }
+
+/* Blue answer scenes */
+.answers { display: grid; grid-template-columns: repeat(3, auto); gap: 1.1rem 4rem; justify-content: start; font-size: 2.6rem; }
+.answers.two-col { grid-template-columns: repeat(2, auto); }
+.blue .note { border-top-color: var(--white); }
+.blue .rule { border-top: 0.14rem solid var(--red); padding-top: 1rem; }
+
+/* Animated drawings and summary lists */
+.status { height: 1.6em; margin: .3rem 0 0; font-weight: 400; color: var(--blue); font-size: 1.5rem; }
+.lines3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+.lines3 .cap { font-size: 1.6rem; color: var(--ink); text-align: center; margin-top: .4rem; }
+.rules { display: flex; flex-direction: column; gap: 1.6rem; }
+.rules .r1 { display: grid; grid-template-columns: 4rem 1fr; gap: 1.5rem; align-items: baseline; border-top: 0.07rem solid var(--frame); padding-top: 1rem; }
+.rules .n { font-family: var(--font-display); font-size: 3rem; color: var(--blue); line-height: 1; }
+.rules p { margin: 0; font-size: 2.1rem; line-height: 1.3; }
+.rules .sub { font-size: 1.35rem; color: var(--ink-muted); margin-top: .3rem; }
+
+/* letters inside figure values (2x, x + 28°) and circles drawn by the figure engine */
+.fig tspan.var { font-family: "Times New Roman", Times, serif; font-style: italic; font-size: 14px; }
+.foot .where { text-transform: none; }

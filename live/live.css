@@ -1,0 +1,161 @@
+/* Live lesson engine: styles.
+   Look: the WYHK presentation slide. A blue field for titles and reveals; white content
+   scenes with a red rule near the foot and the Oswald heading right-aligned beneath it.
+   To use another identity, change only the tokens in :root and the @font-face block. */
+/* Fonts: this site serves its own OFL copies of Oswald and Noto Sans HK (css/fonts.css, linked by
+   the page). No Google Fonts request and no licensed Garamond, so the site stays free of
+   third-party requests and of the College's licensed files. The serif falls back to Georgia. */
+
+:root {
+  color-scheme: light;
+  --blue: #004898;      /* fields, headings, data */
+  --red: #d7000f;       /* lines only: rules, frames, the model line in a chart */
+  --white: #ffffff;
+  --ink: #231f20;
+  --ink-muted: #6d6e71;
+  --frame: #a7a9ac;
+  --font-sans: "Noto Sans HK", "Microsoft JhengHei", sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+  --font-display: Oswald, "Arial Narrow", sans-serif;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+* { box-sizing: border-box; border-radius: 0; }
+/* One rem is sized from the screen, so a 1920 x 1080 television gets about 24px. */
+html { font-size: clamp(11px, min(1.25vw, 2.2vh), 44px); height: 100%; }
+body { margin: 0; height: 100%; overflow: hidden; background: var(--white); color: var(--ink); font-family: var(--font-sans); font-weight: 300; line-height: 1.45; }
+strong { font-weight: 500; }
+button { font: inherit; color: inherit; cursor: pointer; }
+a { color: var(--blue); }
+:focus-visible { outline: 0.15rem solid var(--red); outline-offset: 0.15rem; }
+
+/* ---------- Scenes ---------- */
+.scene {
+  position: absolute; inset: 0; display: grid; grid-template-rows: 1fr auto;
+  padding: 2.5rem 5rem 0; background: var(--white);
+  opacity: 0; visibility: hidden; transform: translateX(3%);
+  transition: opacity .7s var(--ease), transform .7s var(--ease), visibility 0s .7s;
+}
+.scene.past { transform: translateX(-3%); }
+.scene.active { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+.scene.blue { background: var(--blue); color: var(--white); }
+.body { display: flex; flex-direction: column; justify-content: center; gap: 1.4rem; min-height: 0; font-size: 1.5rem; }
+.body > * { margin: 0; }
+
+/* Foot: red rule, heading right-aligned beneath it. The signature goes on white scenes only. */
+.foot { border-top: 0.14rem solid var(--red); display: flex; justify-content: space-between; align-items: center; gap: 2rem; height: 6rem; }
+.foot h2 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 2.6rem; color: var(--blue); text-align: right; flex: 1; }
+.blue .foot h2 { color: var(--white); }
+.foot img { width: 11.8rem; min-width: 189px; height: auto; display: block; }
+.foot.bare { border-top-color: transparent; }
+
+/* ---------- Entrances ---------- */
+/* .in rises when its scene becomes active; --i sets its place in the stagger. */
+.in { opacity: 0; transform: translateY(1.2rem); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.active .in { opacity: 1; transform: none; transition-delay: calc(var(--i, 0) * 110ms + 300ms); }
+/* data-step="n" appears on the n-th press of Next within the scene. */
+[data-step] { opacity: 0; transform: translateY(1.2rem); transition: opacity .6s var(--ease), transform .6s var(--ease); pointer-events: none; }
+[data-step].shown { opacity: 1; transform: none; pointer-events: auto; }
+
+/* ---------- Type ---------- */
+.display { font-family: var(--font-display); font-weight: 400; line-height: 1.12; }
+.huge { font-size: 6.2rem; }
+.big { font-size: 3.4rem; line-height: 1.2; }
+.kicker { font-size: 1.2rem; font-weight: 400; letter-spacing: .04em; }
+.blue-text { color: var(--blue); }
+.muted { color: var(--ink-muted); }
+.blue .muted { color: var(--white); }
+.serif { font-family: var(--font-serif); font-size: 2.3rem; line-height: 1.3; font-weight: 400; }
+.serif strong { font-weight: 700; }
+.narrow { max-width: 46rem; }
+.cap { font-size: .95rem; color: var(--ink-muted); }
+.note { border-top: 0.14rem solid var(--red); padding-top: .8rem; font-weight: 400; }
+
+/* ---------- Title scene: the cross drawn as two red lines ---------- */
+.scene.title { padding-left: calc(11.2% + 4rem); }
+.scene.title .body { padding-top: 6%; }
+.cross-v, .cross-h { position: absolute; background: var(--red); }
+.cross-v { left: 11.2%; top: 0; width: 0.14rem; height: 0; transition: height 1.4s var(--ease) .2s; }
+.cross-h { top: 24%; left: 0; height: 0.14rem; width: 0; transition: width 1.6s var(--ease) .5s; }
+.active .cross-v { height: 100%; }
+.active .cross-h { width: 100%; }
+
+/* ---------- Task rows with timers ---------- */
+.row { display: grid; grid-template-columns: 11rem 1fr; gap: 2rem; align-items: start; padding: 1.1rem 0; border-top: 0.07rem solid var(--frame); }
+.row p { margin: 0; }
+.who { font-family: var(--font-display); font-size: 1.9rem; color: var(--blue); line-height: 1.2; }
+.timer { display: block; margin-top: .5rem; padding: .15rem .7rem; background: var(--white); border: 0.07rem solid var(--blue); color: var(--blue); font-size: 1.15rem; font-weight: 400; font-variant-numeric: tabular-nums; position: relative; min-width: 8rem; text-align: left; }
+.timer::after { content: ""; position: absolute; left: 0; bottom: 0; height: 0.2rem; width: calc(var(--left, 1) * 100%); background: var(--blue); transition: width 1s linear; }
+.timer.done { border-color: var(--red); color: var(--red); }
+.timer.done::after { background: var(--red); width: 100%; }
+
+/* ---------- Buttons ---------- */
+.btn { padding: .4rem 1.4rem; background: var(--white); border: 0.07rem solid var(--blue); color: var(--blue); font-weight: 400; font-size: 1.3rem; transition: background .25s, color .25s; }
+.btn:hover, .btn.on { background: var(--blue); color: var(--white); }
+.btns { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+
+/* ---------- Drawings and meters ---------- */
+svg { display: block; width: 100%; height: auto; overflow: visible; }
+svg text { font-family: var(--font-sans); fill: var(--ink); }
+/* The meter column has a fixed width: if it sized itself to the changing number, the drawing
+   beside it would resize on every frame and the page would shake. */
+.split { display: grid; grid-template-columns: minmax(0, 1fr) 22rem; gap: 3rem; align-items: end; }
+.meter { white-space: nowrap; font-family: var(--font-display); font-size: 5.5rem; color: var(--blue); font-variant-numeric: tabular-nums; line-height: 1; }
+.meter small { font-size: 1.3rem; font-family: var(--font-sans); color: var(--ink-muted); margin-left: .8rem; }
+
+/* ---------- Reveals: counting numbers and growing bars ---------- */
+.count { font-family: var(--font-display); font-size: 9rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.reveal-row { display: grid; grid-template-columns: 9rem 1fr; gap: 2rem; align-items: center; }
+.reveal-row .ev { font-family: var(--font-display); font-size: 2.6rem; }
+.bar { height: 2.6rem; display: flex; align-items: center; margin: .35rem 0; white-space: nowrap; }
+/* flex: none keeps a bar at its true length; otherwise a long label beside it squeezes it. */
+.bar i { display: block; flex: none; height: 100%; width: 0; transition: width 1.8s var(--ease); margin-right: 1rem; }
+.bar.est i { border: 0.1rem solid currentColor; }
+.bar.rec i { background: currentColor; }
+.bar b { font-family: var(--font-display); font-weight: 400; font-size: 2.2rem; font-variant-numeric: tabular-nums; }
+.bar span { font-size: 1.1rem; margin-left: .8rem; }
+
+/* ---------- Sequence that loops back (a cycle) ---------- */
+.cycle { display: grid; grid-template-columns: repeat(var(--n, 4), 1fr); }
+.node { border-top: 0.14rem solid var(--blue); padding: 1rem 1.5rem 0 0; }
+.node .n { font-family: var(--font-display); font-size: 4.2rem; color: var(--blue); line-height: 1; }
+.node h3 { margin: .3rem 0; font-family: var(--font-display); font-weight: 400; font-size: 2.3rem; color: var(--blue); }
+.node p { margin: 0; font-size: 1.25rem; }
+.loop { height: 3.2rem; position: relative; margin-top: 1rem; }
+.loop i { position: absolute; right: 12%; left: 12%; top: 0; bottom: 0; border: 0.14rem solid var(--red); border-top: 0; clip-path: inset(0 0 0 100%); transition: clip-path 1.6s var(--ease) .2s; }
+.loop.shown i { clip-path: inset(0 0 0 0); }
+.loop span { position: absolute; left: 50%; bottom: -0.9rem; transform: translateX(-50%); background: var(--white); padding: 0 1rem; font-size: 1.2rem; font-weight: 400; color: var(--ink); }
+
+/* ---------- A document page with a movable red frame ---------- */
+.two { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 3rem; align-items: start; min-height: 0; }
+.two ol { margin: 0; padding-left: 1.3em; font-size: 1.3rem; display: flex; flex-direction: column; gap: .9rem; }
+.stack { display: flex; flex-direction: column; gap: 1.2rem; }
+.sheet { border: 0.07rem solid var(--frame); height: 68vh; overflow: auto; position: relative; scroll-behavior: smooth; }
+.sheet .page { position: relative; padding: 1.2rem; }
+.sheet img { display: block; width: 100%; height: auto; }
+.focus { position: absolute; left: 0.9rem; right: 0.6rem; border: 0.18rem solid var(--red); top: 0; height: 0; opacity: 0; transition: top .8s var(--ease), height .8s var(--ease), opacity .5s; pointer-events: none; }
+
+/* ---------- Tables and sliders ---------- */
+input[type=range] { width: 100%; accent-color: var(--blue); }
+table { border-collapse: collapse; width: 100%; font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+th, td { text-align: right; padding: .25rem .6rem; border-bottom: 0.07rem solid var(--frame); }
+th:first-child, td:first-child { text-align: left; }
+th { color: var(--blue); font-weight: 400; font-size: 1rem; }
+
+/* ---------- Controls and progress (built by live.js) ---------- */
+.live-progress { position: fixed; left: 0; bottom: 0; height: 0.3rem; background: var(--red); width: 0; transition: width .7s var(--ease); z-index: 5; }
+.live-nav { position: fixed; right: 0; top: 0; padding: .4rem 1rem; background: var(--white); z-index: 6; display: flex; gap: .4rem; align-items: center; font-size: .95rem; font-weight: 400; color: var(--ink-muted); }
+.live-nav button { background: var(--white); border: 0.07rem solid var(--frame); color: var(--blue); padding: .1rem .7rem; font-size: 1rem; }
+.live-nav a { margin-right: .6rem; }
+
+/* Small screens: scenes scroll instead of filling the screen. */
+@media (max-width: 800px) {
+  body { overflow: auto; }
+  .scene { padding: 2rem max(16px, env(safe-area-inset-left, 0px)) 0; overflow: auto; }
+  .two, .split, .cycle { grid-template-columns: 1fr; }
+  .row { grid-template-columns: 1fr; gap: .4rem; }
+  .huge { font-size: 4rem; } .count { font-size: 5.5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01s !important; transition-delay: 0s !important; }
+}

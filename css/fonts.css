@@ -1,0 +1,41 @@
+/* Self-hosted fonts (Latin subset, variable weight) — no requests to Google.
+   Oswald and Noto Sans HK are © their authors, licensed under the SIL Open Font License 1.1
+   (see vendor/fonts/OFL-*.txt). */
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 200 700;
+  font-display: swap;
+  src: url(../vendor/fonts/Oswald-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Noto Sans HK';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../vendor/fonts/NotoSansHK-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* ∠ △ ≅ in ordinary text (reasons, drop-downs, buttons, hints, traps). The text fonts above have no
+   such glyphs, so the browser used to borrow them from a system font, where △ is tiny. These faces
+   take just these three characters from KaTeX's maths font (already on the site, MIT licence), so
+   they look the same as in the maths. size-adjust brings them up to the text's size. */
+@font-face {
+  font-family: 'Noto Sans HK';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(../vendor/katex/fonts/KaTeX_Main-Regular.woff2) format('woff2');
+  unicode-range: U+2220, U+2245, U+25B3;
+  size-adjust: 112%;
+}
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 200 700;
+  font-display: swap;
+  src: url(../vendor/katex/fonts/KaTeX_Main-Regular.woff2) format('woff2');
+  unicode-range: U+2220, U+2245, U+25B3;
+  size-adjust: 112%;
+}

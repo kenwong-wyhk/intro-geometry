@@ -1,0 +1,8 @@
+#!/bin/sh
+# Refresh the ?v= version tags in index.html and the live pages before every commit
+# (see tools/stamp_versions.py).
+cd "$(git rev-parse --show-toplevel)" || exit 0
+PY=python
+command -v python >/dev/null 2>&1 || PY=python3
+"$PY" tools/stamp_versions.py >/dev/null && git add index.html $(git ls-files 's*-live.html')
+exit 0

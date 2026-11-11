@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5.1 Basic Concepts in Geometry Live</title>
+<meta name="description" content="Live version of F1 Ch5 section 5.1, for teaching from the front of the room.">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!-- everything is served from this site: no third-party requests -->
+<link rel="stylesheet" href="css/fonts.css?v=18d89dea">
+<link rel="stylesheet" href="vendor/katex/katex.min.css?v=3f94e1b7">
+<link rel="stylesheet" href="live/live.css?v=a58df557">
+<link rel="stylesheet" href="live/lesson.css?v=b744310b">
+<style>
+/* Styles for this lesson only. Shared lesson styles: live/lesson.css; the engine's: live/live.css. */
+#sweepSvg { max-height: 56vh; display: block; margin: 0 auto; }
+#compSvg { max-height: 40vh; display: block; width: 100%; }
+#sweepSvg text, #compSvg text { font-family: var(--font-sans); text-anchor: middle; dominant-baseline: central; fill: var(--ink); }
+.sweep-name { height: 1.2em; margin: 0; }
+.sweep-range { height: 1.5em; margin: .2rem 0 0; font-size: 1.7rem; }
+.sweep-deg { font-family: var(--font-display); font-size: 3.4rem; color: var(--ink); display: inline-block; width: 4.2em; margin: 0; }
+.sums { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; font-size: 1.7rem; }
+.sums p { margin: 0; }
+.units { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: center; }
+.units .u { border-top: 0.14rem solid var(--blue); padding-top: .8rem; }
+.units .u b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 3.6rem; color: var(--blue); line-height: 1.1; }
+.units .u span { font-size: 1.6rem; }
+.calc { font-size: 2rem; }
+#raysProof .proof-group { font-size: 1.12rem; }
+#raysProof table.proof td.r { font-size: 1rem; }
+#raysProof table.proof td.r:empty, #strProof table.proof td.r:empty { min-width: 0; border-left: 0; padding: 0; }
+.pair .figbox.mid .fig { max-height: 30vh; }
+</style>
+</head>
+<!-- data-reading links back to the reading version (the 5.1 page of the self-study site). -->
+<body data-reading="index.html#/s/5.1">
+
+<!-- 1 Title -->
+<section class="scene blue title">
+  <span class="cross-v"></span><span class="cross-h"></span>
+  <div class="body">
+    <p class="kicker in" style="--i:5">F1 MATHEMATICS · CH5 INTRODUCTION TO GEOMETRY · SECTION 5.1</p>
+    <h1 class="display huge in" style="--i:7">Basic Concepts in Geometry</h1>
+    <p class="in" style="--i:9">Line segments, angles and how lines meet.</p>
+    <p class="kicker in" style="--i:14">Press → to begin</p>
+  </div>
+  <div class="foot bare"><h2></h2></div>
+</section>
+
+<!-- 2 Line segments, then a counting question (the answer is on the next scene) -->
+<section class="scene">
+  <div class="body">
+    <div class="pair">
+      <div class="stack">
+        <div class="figbox small in" style="--i:1" id="segFig"></div>
+        <div class="figbox small" data-step="2" id="countFigQ"></div>
+      </div>
+      <div class="stack">
+        <p class="q in" style="--i:2">A <strong>line segment</strong> has two <strong>end points</strong> and a fixed length.</p>
+        <p class="q" data-step="1">We write $PQ = 4$ cm.</p>
+        <p class="display blue-text" style="font-size:2.4rem" data-step="2">How many line segments are in the lower figure?</p>
+        <div class="btns choice" data-step="2"><button class="btn">3</button><button class="btn">4</button><button class="btn">6</button></div>
+        <p class="note" data-step="3">The next screen counts them. Everyone chosen?</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.1 | Line segments</h2></div>
+</section>
+
+<!-- 3 Answer: the six line segments, one per press -->
+<section class="scene">
+  <div class="body">
+    <div class="pair">
+      <div class="figbox in" style="--i:1" id="countFig"></div>
+      <div class="stack">
+        <p class="q lit" data-step="1" id="cs1">From $A$: &nbsp;$AB$, $AC$, $AD$</p>
+        <p class="q lit" data-step="2" id="cs2">From $B$: &nbsp;$BC$, $BD$</p>
+        <p class="q lit" data-step="3" id="cs3">From $C$: &nbsp;$CD$</p>
+        <p class="display big blue-text" data-step="4">6 line segments.</p>
+        <p data-step="4">Count in order, so that none is missed and none is counted twice.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.1 | Line segments</h2></div>
+</section>
+
+<!-- 4 Naming an angle -->
+<section class="scene">
+  <div class="body">
+    <div class="pair">
+      <div class="figbox in" style="--i:1" id="nameOne"></div>
+      <div class="stack">
+        <p class="q in" style="--i:2">This angle has four names.</p>
+        <p class="q lit" data-step="1" id="nm1">$\angle ABC$ or $\angle CBA$ &nbsp;— the <strong>vertex</strong> is the middle letter</p>
+        <p class="q lit" data-step="2" id="nm2">$\angle B$ &nbsp;— the vertex only</p>
+        <p class="q lit" data-step="3" id="nm3">$b$ &nbsp;— the small letter inside it</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.1 | Naming an angle</h2></div>
+</section>
+
+<!-- 5 Full angle names: the question -->
+<section class="scene">
+  <div class="body">
+    <div class="pair">
+      <div class="figbox in" style="--i:1" id="nameFig"></div>
+      <div class="stack">
+        <p class="display big blue-text in" style="--i:2">Which angle is $\angle B$?</p>
+        <p class="in" style="--i:3">Point to it on the screen.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.1 | Full angle names</h2></div>
+</section>
+
+<!-- 6 Full angle names: the answer -->
+<section class="scene">
+  <div class="body">
+    <p class="in" style="--i:1">Three angles meet at $B$, so "$\angle B$" could be any of them.</p>
+    <div class="lines3">
+      <div class="in" style="--i:2"><div class="figbox small" id="nameFig1"></div><p class="cap">$\angle ABD$</p></div>
+      <div class="in" style="--i:3"><div class="figbox small" id="nameFig2"></div><p class="cap">$\angle DBC$</p></div>
+      <div class="in" style="--i:4"><div class="figbox small" id="nameFig3"></div><p class="cap">$\angle ABC$</p></div>
+    </div>
+    <p class="display big blue-text" data-step="1">Use three letters, vertex in the middle.</p>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.1 | Full angle names</h2></div>
+</section>
+
+<!-- 7 Types of angles: the arm turns, and waits for a press at each new type -->
+<section class="scene" data-enter="sweep">
+  <div class="body">
+    <div class="pair wide-fig">
+      <div class="in" style="--i:1"><svg id="sweepSvg" viewBox="0 0 600 460" role="img" aria-label="One arm of an angle turns from 0 to 360 degrees, stopping at each type of angle"></svg></div>
+      <div class="stack">
+        <p class="sweep-deg in" style="--i:2" id="swDeg">0°</p>
+        <p class="display huge blue-text sweep-name in" style="--i:3" id="swName"></p>
+        <p class="sweep-range in" style="--i:4" id="swRange"></p>
+        <p class="muted in" style="--i:5">Press → to turn the arm to the next type.</p>
+      </div>
+    </div>
+    <span id="swGo1" data-step="1" style="display:none"></span><span id="swGo2" data-step="2" style="display:none"></span><span id="swGo3" data-step="3" style="display:none"></span><span id="swGo4" data-step="4" style="display:none"></span><span id="swGo5" data-step="5" style="display:none"></span>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.1 | Types of angles</h2></div>
+</section>
+
+<!-- 8 Work: name the types -->
+<section class="scene">
+  <div class="body">
+    <div class="pair wide-fig">
+      <div class="figbox in" style="--i:1" id="typesFigQ"></div>
+      <div class="rows compact">
+        <div class="row in" style="--i:2"><div><div class="who">Alone</div><button class="timer" data-sec="90"></button></div><p class="q">Name the type of each marked angle: $a$, $b$, $c$ and $d$.</p></div>
+        <div class="row" data-step="1"><div><div class="who">Pairs</div><button class="timer" data-sec="60"></button></div><p class="q">Compare. Which one is hardest to tell?</p></div>
+        <p class="note" data-step="2">The next screen shows the answers. Are all four written down?</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.1 | Types of angles: try</h2></div>
+</section>
+
+<!-- 9 Reveal: the types -->
+<section class="scene blue">
+  <div class="body">
+    <div class="answers two-col">
+      <span class="in" style="--i:1">$a$: right angle</span><span class="in" style="--i:2">$b$: obtuse angle</span>
+      <span class="in" style="--i:3">$c$: reflex angle</span><span class="in" style="--i:4">$d$: acute angle</span>
+    </div>
+    <div class="rule" data-step="1">
+      <p class="display big">$c$ is marked on the outside of the dent.</p>
+      <p>It is more than a straight angle, so it is a reflex angle.</p>
+    </div>
+  </div>
+  <div class="foot"><h2>5.1 | Types of angles: answers</h2></div>
+</section>
+
+<!-- 10 Angles as units, and one worked together -->
+<section class="scene">
+  <div class="body">
+    <div class="units">
+      <div class="u in" style="--i:1"><b>90°</b><span>1 right angle</span></div>
+      <div class="u in" style="--i:2"><b>180°</b><span>1 straight angle</span></div>
+      <div class="u in" style="--i:3"><b>360°</b><span>1 round angle</span></div>
+    </div>
+    <p class="q" data-step="1">Express $\dfrac{3}{4}$ straight angle in degrees.</p>
+    <p class="calc" data-step="2">$\dfrac{3}{4}$ straight angle $= \dfrac{3}{4} \times 180^\circ$</p>
+    <p class="calc" data-step="3">$= 135^\circ$</p>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.1 | Right, straight, round</h2></div>
+</section>
+
+<!-- 11 Work: express in degrees -->
+<section class="scene">
+  <div class="body rows">
+    <div class="row in" style="--i:1"><div><div class="who">Alone</div><button class="timer" data-sec="150"></button></div>
+      <div><p class="q">Express in degrees.</p>
+      <div class="fills"><span>(a) $\dfrac{2}{5}$ straight angle</span><span>(b) $1\dfrac{1}{6}$ right angles</span><span>(c) $\dfrac{3}{8}$ round angle</span></div></div>
+    </div>
+    <div class="row" data-step="1"><div><div class="who">Then</div></div><p class="q">Arrange the three angles in ascending order, using "&lt;".</p></div>
+    <p class="note" data-step="2">The next screen shows the answers. Are all three written down?</p>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.1 | Right, straight, round: try</h2></div>
+</section>
+
+<!-- 12 Reveal -->
+<section class="scene blue">
+  <div class="body">
+    <div class="answers">
+      <span class="in" style="--i:1">(a) $\dfrac{2}{5} \times 180^\circ = 72^\circ$</span>
+      <span class="in" style="--i:2">(b) $\dfrac{7}{6} \times 90^\circ = 105^\circ$</span>
+      <span class="in" style="--i:3">(c) $\dfrac{3}{8} \times 360^\circ = 135^\circ$</span>
+    </div>
+    <div class="rule" data-step="1">
+      <p class="display big">$\dfrac{2}{5}$ straight angle $\lt 1\dfrac{1}{6}$ right angles $\lt \dfrac{3}{8}$ round angle</p>
+      <p>Change everything into degrees first, then compare.</p>
+    </div>
+  </div>
+  <div class="foot"><h2>5.1 | Right, straight, round: answers</h2></div>
+</section>
+
+<!-- 13 Complementary and supplementary: the pieces come together -->
+<section class="scene" data-enter="comp">
+  <div class="body">
+    <div class="in" style="--i:1"><svg id="compSvg" viewBox="0 0 1000 330" role="img" aria-label="Angles of 35 and 55 degrees join to make a right angle; angles of 35 and 145 degrees join to make a straight angle"></svg></div>
+    <div class="sums">
+      <div class="stack">
+        <p data-step="1">$35^\circ + 55^\circ = 90^\circ$</p>
+        <p class="display big blue-text" data-step="1">Complementary angles</p>
+      </div>
+      <div class="stack">
+        <p data-step="3">$35^\circ + 145^\circ = 180^\circ$</p>
+        <p class="display big blue-text" data-step="3">Supplementary angles</p>
+      </div>
+    </div>
+    <span id="compGo" data-step="2" style="display:none"></span>
+    <p class="note" data-step="4">The two angles need not be next to each other. Only the sum matters.</p>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.1 | Complementary, supplementary</h2></div>
+</section>
+
+<!-- 14 Problem: rays from a point -->
+<section class="scene">
+  <div class="body">
+    <div class="pair wide-fig">
+      <div class="figbox in" style="--i:1" id="raysFigQ"></div>
+      <div class="rows compact">
+        <div class="row in" style="--i:2"><div><div class="who">Alone</div><button class="timer" data-sec="180"></button></div>
+          <div><p class="q">(a) Name a pair of complementary angles.</p><p class="q">(b) $\angle AOD$ and $\angle COD$ are supplementary. Find $\angle COD$.</p></div></div>
+        <div class="row" data-step="1"><div><div class="who">Commit</div></div>
+          <div><p class="q">$\angle COD$ is</p><div class="btns choice" style="margin-top:.6rem"><button class="btn">$10^\circ$</button><button class="btn">$100^\circ$</button><button class="btn">$134^\circ$</button><button class="btn">something else</button></div></div></div>
+        <p class="note" data-step="2">The next screen shows the solution. Has everyone committed?</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.1 | Rays from a point</h2></div>
+</section>
+
+<!-- 15 Solution -->
+<section class="scene">
+  <div class="body tight">
+    <div class="pair wide-proof">
+      <div class="figbox in" style="--i:1" id="raysFig"></div>
+      <div class="in" style="--i:2" id="raysProof"></div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.1 | Rays from a point: solution</h2></div>
+</section>
+
+<!-- 16 Is it straight? (prediction) -->
+<section class="scene">
+  <div class="body">
+    <div class="pair wide-fig">
+      <div class="figbox in" style="--i:1" id="strFigQ"></div>
+      <div class="stack">
+        <p class="display blue-text in" style="--i:2;font-size:2.6rem">Is $\angle AOD$ a straight angle?</p>
+        <div class="btns choice in" style="--i:3"><button class="btn">Yes</button><button class="btn">No</button></div>
+        <p class="q" data-step="1">Write one line to explain your answer.</p>
+        <p class="note" data-step="2">The next screen shows the working. Everyone chosen?</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.1 | Is it straight?</h2></div>
+</section>
+
+<!-- 17 Solution -->
+<section class="scene">
+  <div class="body tight">
+    <div class="pair wide-proof">
+      <div class="figbox in" style="--i:1" id="strFig"></div>
+      <div class="stack">
+        <div id="strProof"></div>
+        <p class="note" data-step="6">A figure can look straight when it is not. Add the angles.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.1 | Is it straight? Solution</h2></div>
+</section>
+
+<!-- 18 Parallel and perpendicular -->
+<section class="scene">
+  <div class="body">
+    <div class="pair">
+      <div class="stack in" style="--i:1">
+        <div class="figbox mid" id="parFig"></div>
+        <p class="display blue-text" style="font-size:2.4rem;margin:0" data-step="1">$AB \parallel CD$</p>
+        <p data-step="1"><strong>Parallel</strong> lines never meet. Mark them with the same arrows.</p>
+      </div>
+      <div class="stack in" style="--i:2">
+        <div class="figbox mid" id="perpFig"></div>
+        <p class="display blue-text" style="font-size:2.4rem;margin:0" data-step="2">$AB \perp CD$</p>
+        <p data-step="2"><strong>Perpendicular</strong> lines meet at a right angle. $B$ is the <strong>foot of the perpendicular</strong>.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.1 | Parallel, perpendicular</h2></div>
+</section>
+
+<!-- 19 Work: read the marks -->
+<section class="scene">
+  <div class="body">
+    <div class="pair wide-fig">
+      <div class="figbox in" style="--i:1" id="trapFigQ"></div>
+      <div class="rows compact">
+        <div class="row in" style="--i:2"><div><div class="who">Alone</div><button class="timer" data-sec="90"></button></div>
+          <div><p class="q">Which side is parallel to $AB$?</p><p class="q">Which side is perpendicular to $DC$?</p></div></div>
+        <div class="row" data-step="1"><div><div class="who">Choose</div></div>
+          <div><p class="q">Which is correct?</p><div class="btns choice opts" style="margin-top:.6rem"><button class="btn"><span class="opt">A</span>$AD \parallel BC$</button><button class="btn"><span class="opt">B</span>$AB \perp DC$</button><button class="btn"><span class="opt">C</span>$AD \perp AB$</button><button class="btn"><span class="opt">D</span>$BC \perp DC$</button></div></div></div>
+        <p class="note" data-step="2">The next screen shows the answers. Has everyone chosen a letter?</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.1 | Read the marks</h2></div>
+</section>
+
+<!-- 20 Reveal -->
+<section class="scene blue">
+  <div class="body">
+    <div class="answers two-col">
+      <span class="in" style="--i:1">$AB \parallel DC$</span><span class="in" style="--i:2">$AD \perp DC$</span>
+    </div>
+    <div class="rule" data-step="1">
+      <p class="display big">The answer is C.</p>
+      <p>$AB$ has the same direction as $DC$, and $AD$ meets $DC$ at $90^\circ$. So $AD$ meets $AB$ at $90^\circ$ too.</p>
+    </div>
+  </div>
+  <div class="foot"><h2>5.1 | Read the marks: answers</h2></div>
+</section>
+
+<!-- 21 Today -->
+<section class="scene">
+  <div class="body">
+    <div class="rules">
+      <div class="r1 in" style="--i:1"><span class="n">1</span><div><p>Name an angle with three letters.</p><p class="sub">$\angle ABC$: the vertex is the middle letter. $\angle B$ is unclear when several angles meet at $B$.</p></div></div>
+      <div class="r1" data-step="1"><span class="n">2</span><div><p>Know $90^\circ$, $180^\circ$ and $360^\circ$.</p><p class="sub">Right, straight and round angles. Complementary angles add up to $90^\circ$; supplementary angles add up to $180^\circ$.</p></div></div>
+      <div class="r1" data-step="2"><span class="n">3</span><div><p>Use the marks and the numbers, not how it looks.</p><p class="sub">Arrows for parallel, a small square for perpendicular. Add the angles before saying a line is straight.</p></div></div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.1 | Today</h2></div>
+</section>
+
+<!-- 22 After class -->
+<section class="scene blue">
+  <div class="body">
+    <p class="display huge in" style="--i:1">After class</p>
+    <p class="in" style="--i:2">On the self-study site, section 5.1: <strong>Practice</strong> (12 questions, one with new numbers each time) and <strong>Traps</strong>.</p>
+    <p class="in" style="--i:3">Then the <strong>Sorting Game</strong>, deck "Types of angles", and its Speed Round.</p>
+    <p class="kicker in" style="--i:5">NEXT: 5.2 PLANE FIGURES</p>
+  </div>
+  <div class="foot"><h2>5.1 | Practise</h2></div>
+</section>
+
+<script src="vendor/katex/katex.min.js?v=4881bfc9"></script>
+<script src="js/core.js?v=b91bfc72"></script>
+<script src="js/geom.js?v=c6a92979"></script>
+<script src="js/check.js?v=c7d26bad"></script>
+<script src="js/question.js?v=2445e9af"></script>
+<script src="js/demos.js?v=3dc25a41"></script>
+<script src="data/helpers.js?v=02530cf8"></script>
+<script src="data/s51.js?v=3b636010"></script>
+<script src="live/live.js?v=4d78ca3d"></script>
+<script src="live/lesson.js?v=ef6bdcf3"></script>
+<script>
+'use strict';
+/* ---------- 1. Maths and helpers: live/lesson.js ---------- */
+const { $, C, onShown, figInto, solution, litFigure } = L5;
+const SEC = C5.sections['5.1'];
+const practice = id => SEC.practice.find(q => q.id === id);
+
+/* ---------- 2. Figures (the same figures as the reading version, data/s51.js) ---------- */
+figInto('segFig', { w: 300, h: 80, pts: { P: [50, 50], Q: [250, 36] }, lines: ['PQ'], dots: 'PQ', st: { PQ: '4 cm' }, stPos: { PQ: [0, -13] }, lab: { P: [-4, 15], Q: [4, 15] } });
+const COUNT = { w: 320, h: 80, pts: { A: [35, 45], B: [118, 45], C: [201, 45], D: [284, 45] }, lines: ['ABCD'], dots: 'ABCD', lab: { A: [0, 16], B: [0, 16], C: [0, 16], D: [0, 16] } };
+figInto('countFigQ', COUNT);
+// each press lights the segments that start from one point; the three groups take the three colours
+litFigure('countFig', COUNT, [['cs1', [['AD', 1]]], ['cs2', [['BD', 2]]], ['cs3', [['CD', 3]]]]);
+
+litFigure('nameOne', { w: 260, h: 150, pts: { A: [190, 25], B: [50, 125], C: [225, 125] }, lines: ['AB', 'BC'], at: { ABC: 'b' } },
+  [['nm1', [['ABC', 1]]], ['nm2', [['B', 2]]], ['nm3', [['ABC', 3]]]]);
+
+const NAME = { w: 260, h: 150, pts: { A: [110, 20], B: [45, 125], C: [225, 125], D: [205, 45] }, lines: ['AB', 'BC', 'BD'] };
+figInto('nameFig', NAME);
+figInto('nameFig1', Object.assign({ arcs: { ABD: 1 }, arcR: 24 }, NAME), [['ABD', 1]]);
+figInto('nameFig2', Object.assign({ arcs: { DBC: 1 }, cols: { DBC: 2 }, arcR: 24 }, NAME), [['DBC', 2]]);
+figInto('nameFig3', Object.assign({ arcs: { ABC: 1 }, cols: { ABC: 3 }, arcR: 24 }, NAME), [['ABC', 3]]);
+
+figInto('typesFigQ', practice('51-3').fig);
+
+const RAYS = SEC.examples[2];
+figInto('raysFigQ', RAYS.fig);
+solution('raysFig', 'raysProof', RAYS.fig, RAYS.steps.map((s, i) => (s.t === '(a)' ? Object.assign({ fixed: true }, s) : s)));
+
+const STR = SEC.examples[3];
+figInto('strFigQ', STR.fig);
+solution('strFig', 'strProof', STR.fig, [
+  { s: '∠AOD = ∠AOB + ∠BOC + ∠COD', hl: [['AOB', 1], ['BOC', 2], ['COD', 3]] },
+  { s: '= 28° + 117° + 36°' },
+  { s: '= 181°' },
+  { s: '\\neq 180°' },
+  { t: '$\\therefore\\ \\angle AOD$ is <b>not</b> a straight angle.' },
+]);
+
+figInto('parFig', { w: 220, h: 130, pts: { A: [25, 95], B: [165, 30], C: [60, 115], D: [200, 50] }, lines: ['AB', 'CD'], arrows: { AB: 1, CD: 1 } });
+figInto('perpFig', { w: 220, h: 130, pts: { A: [107.2, 25], B: [120, 85], C: [20, 106.4], D: [200, 67.9] }, lines: ['AB', 'CD'], rights: ['ABD'], lab: { B: [-6, 16] } });
+figInto('trapFigQ', practice('51-9').fig);
+
+/* ---------- 3. Animation: the arm turns through the six types of angle ----------
+   It stops at each type and waits; the hidden markers #swGo1..5 are the presses. Back returns to the stop before. */
+(function () {
+  const svg = $('sweepSvg'), c = [300, 240], R = 190;
+  const STOPS = [60, 90, 140, 180, 290, 360];
+  const mk = (t, a) => { const e = Live.svg(t, a); svg.appendChild(e); return e; };
+  mk('circle', { cx: c[0], cy: c[1], r: R, fill: 'none', stroke: 'var(--blue-tint-2)', 'stroke-width': 2 });
+  const sector = mk('path', { fill: 'var(--blue)', 'fill-opacity': .14 });
+  mk('line', { x1: c[0], y1: c[1], x2: c[0] + R, y2: c[1], stroke: 'var(--ink)', 'stroke-width': 4, 'stroke-linecap': 'round' });
+  const arc = mk('path', { fill: 'none', stroke: 'var(--ink)', 'stroke-width': 3 });
+  const square = mk('path', { d: `M${c[0] + 34} ${c[1]} L${c[0] + 34} ${c[1] - 34} L${c[0]} ${c[1] - 34}`, fill: 'none', stroke: 'var(--ink)', 'stroke-width': 3 });
+  const arm = mk('line', { x1: c[0], y1: c[1], stroke: 'var(--blue)', 'stroke-width': 6, 'stroke-linecap': 'round' });
+  mk('circle', { cx: c[0], cy: c[1], r: 6, fill: 'var(--ink)' });
+  const name = $('swName'), range = $('swRange'), degEl = $('swDeg');
+  const marks = [1, 2, 3, 4, 5].map(i => $('swGo' + i));
+  let cur = 0, run = 0;
+  function set(d) {
+    cur = d;
+    const r = Math.round(d), end = DEMO.polar(c, R, d);
+    arm.setAttribute('x2', end[0].toFixed(1)); arm.setAttribute('y2', end[1].toFixed(1));
+    const a = DEMO.arcPath(c, 46, 0, Math.max(d, 0.01));
+    arc.setAttribute('d', a); sector.setAttribute('d', `M${c[0]} ${c[1]} L${a.slice(1)} Z`);
+    arc.setAttribute('opacity', r === 90 ? 0 : 1); square.setAttribute('opacity', r === 90 ? 1 : 0);
+    degEl.textContent = r + '°';
+    const t = DEMO.TYPES.find(x => x[1](r));
+    name.textContent = t ? t[0] : '';
+    range.textContent = t ? t[2] : '';
+  }
+  const target = () => STOPS[marks.filter(m => m.classList.contains('shown')).length];
+  function goTo(to) {
+    const from = cur, me = ++run;
+    return Live.tween(Math.min(2600, 500 + Math.abs(to - from) * 12), p => set(from + (to - from) * Live.ease(p)), () => me === run);
+  }
+  set(0);
+  marks.forEach(m => new MutationObserver(() => { if (target() !== cur) goTo(target()); }).observe(m, { attributes: true, attributeFilter: ['class'] }));
+  Live.onEnter('sweep', async alive => {
+    run++; set(0);
+    await Live.wait(700, alive); if (!alive()) return;
+    goTo(target());
+  });
+})();
+
+/* ---------- 4. Animation: two angles come together ----------
+   On entering, 35° and 55° join into a right angle. The hidden marker #compGo joins 35° and 145° into a straight angle. */
+(function () {
+  const svg = $('compSvg'), R = 150;
+  const mk = (t, a, txt) => { const e = Live.svg(t, a, txt); svg.appendChild(e); return e; };
+  function wedge(deg, col) {
+    const path = mk('path', { fill: col, 'fill-opacity': .22, stroke: 'var(--ink)', 'stroke-width': 3, 'stroke-linejoin': 'round' });
+    const label = mk('text', { 'font-size': 30 }, deg + '°');
+    return (pos, rot) => {
+      path.setAttribute('d', `M${pos[0].toFixed(1)} ${pos[1].toFixed(1)} L${DEMO.arcPath(pos, R, rot, rot + deg).slice(1)} Z`);
+      const lp = DEMO.polar(pos, deg < 40 ? R * .74 : R * .58, rot + deg / 2);
+      label.setAttribute('x', lp[0].toFixed(1)); label.setAttribute('y', lp[1].toFixed(1));
+    };
+  }
+  const V1 = [250, 290], V2 = [780, 290];
+  const a1 = wedge(35, C(1)), b1 = wedge(55, C(2)), a2 = wedge(35, C(1)), b2 = wedge(145, C(3));
+  const sq = mk('path', { d: `M${V1[0] + 26} ${V1[1]} L${V1[0] + 26} ${V1[1] - 26} L${V1[0]} ${V1[1] - 26}`, fill: 'none', stroke: 'var(--ink)', 'stroke-width': 3, opacity: 0 });
+  const st = mk('line', { x1: V2[0] - R, y1: V2[1], x2: V2[0] + R, y2: V2[1], stroke: 'var(--ink)', 'stroke-width': 6, 'stroke-linecap': 'round', opacity: 0 });
+  a1(V1, 0); a2(V2, 0);
+  // p = 0: apart (lying flat to the left); p = 1: joined
+  const pair1 = p => { b1([V1[0] - 210 * (1 - p), V1[1]], 35 * p); sq.setAttribute('opacity', p >= 1 ? 1 : 0); };
+  const pair2 = p => { b2([V2[0] - 290 * (1 - p), V2[1]], 35 * p); st.setAttribute('opacity', p >= 1 ? 1 : 0); };
+  let p2 = 0, run2 = 0;
+  const go2 = to => { const from = p2, me = ++run2; return Live.tween(1500 * Math.abs(to - from) + 1, p => { p2 = from + (to - from) * Live.ease(p); pair2(p2); }, () => me === run2); };
+  pair1(0); pair2(0);
+  const marker = $('compGo');
+  new MutationObserver(() => { const to = marker.classList.contains('shown') ? 1 : 0; if (to !== p2) go2(to); }).observe(marker, { attributes: true, attributeFilter: ['class'] });
+  Live.onEnter('comp', async alive => {
+    pair1(0); run2++; p2 = marker.classList.contains('shown') ? 1 : 0; pair2(p2);
+    await Live.wait(900, alive); if (!alive()) return;
+    await Live.tween(1700, p => pair1(Live.ease(p)), alive);
+  });
+})();
+</script>
+</body>
+</html>
