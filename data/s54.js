@@ -39,6 +39,7 @@
     id: '5.4',
     title: 'Three-Dimensional Figures',
     blurb: 'Polyhedra, prisms and pyramids, cylinders and cones, cross-sections, and drawing solids on paper.',
+    live: 's54-live.html',   // the step-through version shown in class
     traps: ['curvedface', 'hiddenedges', 'prismpyramid', 'uniformpyramid', 'flatshape', 'solidlines'],
     learn: [
       { p: 'A <b>solid</b> (a three-dimensional figure) has length, width and height. Solids are sorted into two groups.' },
@@ -75,6 +76,7 @@
       {
         key: 'A <b>2-D representation</b> of a solid is a plane figure that represents it. Draw the edges you can see as <b>solid lines</b> and the hidden edges as <b>dotted lines</b>.<br>Grid paper helps: <b>oblique grid paper</b> has squares (the front face keeps its true shape, and the depth goes along the slanted lines); <b>isometric grid paper</b> has triangles (the three directions of a cuboid follow the three directions of the grid).',
       },
+      { tip: 'On oblique grid paper, <b>one slanted grid line stands for 2 units</b>. Along the level and upright lines, one grid line is 1 unit as usual. So a depth of 4 units is drawn as 2 slanted grid lines.', title: 'Remember: the slanted line counts double' },
       { demo: 'grids' },
       {
         title: 'Sketching a prism',

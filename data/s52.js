@@ -17,8 +17,9 @@
   C5.sections['5.2'] = {
     id: '5.2',
     title: 'Plane Figures',
-    blurb: 'Types of triangles, the angle sum of a triangle, and types of polygons.',
-    traps: ['twonames', 'anglesumcheck', 'wrongtriangle', 'equalmarks', 'regularboth', 'concave'],
+    blurb: 'Types of triangles, the angle sum of a triangle, types of polygons, and circles.',
+    live: 's52-live.html',   // the step-through version shown in class
+    traps: ['twonames', 'anglesumcheck', 'wrongtriangle', 'equalmarks', 'regularboth', 'concave', 'anychord'],
     learn: [
       { h: 'Types of triangles' },
       { p: 'A triangle can be classified in two ways: by the <b>lengths of its sides</b>, and by the <b>sizes of its angles</b>.' },
@@ -67,6 +68,14 @@
         ],
       },
       { tip: 'A regular polygon needs <b>both</b>: equal sides and equal angles. A rhombus has equal sides only; a rectangle has equal angles only. Neither is regular.', title: 'Regular means both' },
+      { h: 'Circles' },
+      { p: 'A circle is a plane figure too, but it is <b>not</b> a polygon: it has no straight sides.' },
+      {
+        title: 'Centre, radius, diameter and circumference',
+        key: 'Every point on a circle is the same distance from its <b>centre</b>.<ul><li>A <b>radius</b> is a line segment from the centre to the circle.</li><li>A <b>diameter</b> is a line segment joining two points on the circle and passing through the centre. &nbsp; diameter $= 2 \\times$ radius</li><li>The <b>circumference</b> is the curve that forms the circle. The word also means the length of that curve: the distance once round the circle.</li></ul>',
+      },
+      { demo: 'circle' },
+      { tip: 'A line segment joining two points on a circle is a diameter <b>only if it passes through the centre</b>. All diameters of one circle have the same length, and so do all its radii.', title: 'Not every line across a circle is a diameter' },
       { cta: { href: '#/game', label: 'Play the Sorting Game', text: 'Sort triangles and polygons against the clock.' } },
     ],
     examples: [
@@ -238,6 +247,18 @@
         ],
         hints: ['Ticks show equal sides. Small squares show right angles.', 'Regular = equal sides and equal angles together.'],
         sol: ['(a) I, II and IV: none of their interior angles is greater than $180^\\circ$.', '(b) I and II: every side carries the same mark.', '(c) I only: it is both equilateral and equiangular.'],
+      },
+      {
+        id: '52-12', level: 1,
+        q: 'In the figure, $O$ is the centre of the circle. $AOB$ is a straight line, and $C$ and $D$ are points on the circle.',
+        fig: { w: 260, h: 190, fit: false, pts: { O: [130, 95], A: [60, 95], B: [200, 95], C: [165, 34.4], D: [173.1, 150.2] }, circles: [{ c: 'O', r: 70 }], lines: ['AB', 'OC', 'CD'], dots: 'O', lab: { O: [-4, 14], A: [-12, 0], B: [12, 0], C: [8, -11], D: [9, 11] } },
+        parts: [
+          { type: 'pick', label: '(a) Choose all the radii.', options: ['$OA$', '$OC$', '$AB$', '$CD$'], ans: [0, 1], why: { 2: 'AB joins two points on the circle through the centre: it is a diameter, made of two radii.', 3: 'CD does not start from the centre.' }, miss: { 0: 'OA also joins the centre to a point on the circle.' } },
+          { type: 'mcq', label: '(b) Which line segment is a diameter?', options: ['$OC$', '$CD$', '$AB$'], ans: 2, why: { 1: 'CD joins two points on the circle, but it does not pass through the centre O.' }, whyTrap: { 1: 'anychord' } },
+          { label: '(c) If $OC = 4$ cm, then', lines: ['$OA = $ [[num:4]] cm and $AB = $ [[num:8]] cm.'], wrongs: [{ tok: 1, val: 4, hint: 'AB is a diameter: AB = AO + OB.', trap: 'radiusdiameter' }] },
+        ],
+        hints: ['A radius joins the centre to a point on the circle.', 'A diameter joins two points on the circle and passes through the centre. Its length is twice the radius.'],
+        sol: ['(a) $OA$ and $OC$ join the centre to the circle, so they are radii. ($OB$ is a radius too.)', '(b) $AB$ passes through the centre $O$, so it is a diameter. $CD$ does not.', '(c) All radii are equal, so $OA = OC = 4$ cm, and $AB = 2 \\times 4 = 8$ cm.'],
       },
       {
         id: '52-9', level: 2,

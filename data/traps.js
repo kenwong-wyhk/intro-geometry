@@ -79,6 +79,13 @@ C5.traps = [
     good: 'Measure each interior angle on the <b>inside</b> of the polygon. Where the outline has a dent, the interior angle is a reflex angle.',
     why: 'A polygon with at least one interior angle greater than $180^\\circ$ is concave.',
   },
+  {
+    id: 'anychord', title: 'Calling any line across a circle a diameter', sections: ['5.2'],
+    fig: { w: 220, h: 150, fit: false, pts: { O: [110, 75], A: [50, 75], B: [170, 75], C: [140, 23], D: [67, 117] }, circles: [{ c: 'O', r: 60 }], lines: ['AB', 'CD'], dots: 'O', lab: { O: [-2, 13], A: [-12, 0], B: [12, 0], C: [8, -10], D: [-10, 10] } },
+    bad: '"$CD$ joins two points on the circle, so it is a diameter."',
+    good: 'A diameter must pass through the <b>centre</b>. $AB$ is a diameter; $CD$ is not.',
+    why: 'A line segment that misses the centre is shorter than a diameter. Only a diameter is twice the radius.',
+  },
   /* ---------- 5.3 ---------- */
   {
     id: 'rubout', title: 'Rubbing out the construction lines', sections: ['5.3'],
@@ -87,7 +94,7 @@ C5.traps = [
     why: 'The arcs show <b>how</b> you constructed the figure. Without them the marker cannot tell that you used compasses.',
   },
   {
-    id: 'radiusdiameter', title: 'Opening the compasses to the diameter', sections: ['5.3'],
+    id: 'radiusdiameter', title: 'Opening the compasses to the diameter', sections: ['5.2', '5.3'],
     bad: 'For a circle of diameter 6 cm, the compasses are opened to 6 cm.',
     good: 'The opening of the compasses is the <b>radius</b>: $6 \\div 2 = 3$ cm.',
     why: 'The needle is at the centre and the pencil is on the circle, so the opening is the distance from the centre to the circle.',

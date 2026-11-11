@@ -3,7 +3,8 @@
 C5.sections['5.3'] = {
   id: '5.3',
   title: 'Basic Constructions',
-  blurb: 'Parallel and perpendicular lines, circles, copying a line segment, and the five ways to construct a triangle.',
+  blurb: 'Constructing parallel and perpendicular lines and circles, copying a line segment, and the five ways to construct a triangle.',
+  live: 's53-live.html',   // the step-through version shown in class
   traps: ['rubout', 'radiusdiameter', 'protractorscale', 'includedangle', 'case4', 'hypotenuse'],
   learn: [
     { p: 'In a construction you draw an accurate figure with drawing tools. You need a sharp pencil and four tools.' },
@@ -21,12 +22,7 @@ C5.sections['5.3'] = {
     { h: 'Lines, circles and copying a length' },
     { p: 'Watch each construction one step at a time. Then try it on paper.' },
     { demo: 'constructions', only: ['parallel', 'perp', 'circle', 'copy'] },
-    {
-      title: 'Words for circles',
-      key: 'Every point on a circle is the same distance from its <b>centre</b>. A line segment from the centre to the circle is a <b>radius</b>. A line segment joining two points on the circle and passing through the centre is a <b>diameter</b>.<br>diameter $= 2 \\times$ radius',
-      fig: { w: 240, h: 170, fit: false, pts: { O: [120, 85], P: [169.5, 35.5], A: [50, 85], B: [190, 85] }, circles: [{ c: 'O', r: 70 }], lines: ['AB', 'OP'], dots: 'O', lab: { O: [-4, 14], P: [10, -8], A: [-12, 0], B: [12, 0] } },
-      cap: '$OP$ is a radius. $AB$ is a diameter.',
-    },
+    { tip: 'From 5.2: every point on a circle is the same distance from its centre. That distance is the <b>radius</b>, and it is the opening of your compasses. The diameter is twice the radius. The pencil draws the <b>circumference</b>.', title: 'Remember: radius and diameter' },
     { h: 'Constructing triangles' },
     { p: 'Which tools you need depends on what is given. There are five cases.' },
     {

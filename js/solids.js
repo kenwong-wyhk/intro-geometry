@@ -219,7 +219,7 @@ const SOL = (() => {
     const cx = ax + aw / 2, cy = ay + (ah - capH) / 2;
     const mx = (box[0] + box[2]) / 2, my = (box[1] + box[3]) / 2;
     const g = mk('g', { transform: `translate(${f2(cx)} ${f2(cy)})${lying ? ' rotate(-90)' : ''} scale(${f2(k)}) translate(${f2(-mx)} ${f2(-my)})` }, root);
-    const sw = w => f2(w / k);
+    const sw = w => f2(w * (s.weight || 1) / k);   // weight: thicker lines for a large drawing (live pages)
     const dash = `${sw(5)} ${sw(4)}`, dot = `${sw(1.5)} ${sw(4)}`;
     const style = cls => cls === 'hid' ? { stroke: 'var(--ink)', 'stroke-width': sw(1.2), 'stroke-dasharray': dash }
       : cls === 'cut' ? { stroke: 'var(--c2)', 'stroke-width': sw(2.2), 'stroke-dasharray': dot, 'stroke-linecap': 'round' }

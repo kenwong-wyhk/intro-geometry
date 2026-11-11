@@ -24,8 +24,9 @@ C5.sheet = [
       rows: [['convex', 'all interior angles less than $180^\\circ$'], ['concave', 'at least one interior angle greater than $180^\\circ$'], ['equilateral', 'all sides equal'], ['equiangular', 'all interior angles equal'], ['<b>regular</b>', 'equilateral <b>and</b> equiangular']],
     },
   },
+  { key: '<b>Circle</b>: every point is the same distance from the <b>centre</b>. <b>Radius</b>: centre to circle. <b>Diameter</b>: across the circle <b>through the centre</b>; diameter $= 2 \\times$ radius. <b>Circumference</b>: the curve itself, and its length.' },
   { h: '3. Basic constructions (5.3)' },
-  { key: 'Parallel and perpendicular lines: <b>ruler + set square</b> (slide the set square along the ruler).<br>Circles, arcs, copying a length: <b>compasses</b>. The opening is the <b>radius</b>; diameter $= 2 \\times$ radius.' },
+  { key: 'Parallel and perpendicular lines: <b>ruler + set square</b> (slide the set square along the ruler).<br>Circles, arcs, copying a length: <b>compasses</b>. The opening is the <b>radius</b>.' },
   {
     table: {
       head: ['Case', 'Given', 'Tools'],
@@ -41,5 +42,5 @@ C5.sheet = [
       rows: [['Prism', '$2n$', '$3n$', '$n + 2$'], ['Pyramid', '$n + 1$', '$2n$', '$n + 1$']],
     },
   },
-  { key: 'A <b>cross-section</b> is the flat face made by a cut. <b>Uniform cross-sections</b>: every cut parallel to the end faces has the same shape <b>and</b> size — prisms and circular cylinders only.<br>In a 2-D drawing, visible edges are solid lines and hidden edges are dotted lines.' },
+  { key: 'A <b>cross-section</b> is the flat face made by a cut. <b>Uniform cross-sections</b>: every cut parallel to the end faces has the same shape <b>and</b> size — prisms and circular cylinders only.<br>In a 2-D drawing, visible edges are solid lines and hidden edges are dotted lines. On oblique grid paper, one slanted grid line stands for 2 units.' },
 ];

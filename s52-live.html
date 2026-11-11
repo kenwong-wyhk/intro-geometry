@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5.2 Plane Figures Live</title>
+<meta name="description" content="Live version of F1 Ch5 section 5.2, for teaching from the front of the room.">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!-- everything is served from this site: no third-party requests -->
+<link rel="stylesheet" href="css/fonts.css?v=18d89dea">
+<link rel="stylesheet" href="vendor/katex/katex.min.css?v=3f94e1b7">
+<link rel="stylesheet" href="live/live.css?v=7f277b95">
+<link rel="stylesheet" href="live/lesson.css?v=0de77e0b">
+<style>
+/* Styles for this lesson only. Shared lesson styles: live/lesson.css; the engine's: live/live.css. */
+#tearSvg { max-height: 46vh; display: block; width: 100%; }
+#tearSvg text, #circSvg text { font-family: "Times New Roman", Times, serif; font-style: italic; font-size: 34px; text-anchor: middle; dominant-baseline: central; fill: var(--ink); }
+#circSvg { max-height: 60vh; display: block; width: 100%; }
+#exQProof .proof-group, #quadProof .proof-group { font-size: 1.1rem; }
+#ex1Proof .proof-group, #whyProof .proof-group { font-size: 1.3rem; }
+#whyProof table.proof td.r { min-width: 9em; }
+#whyProof table.proof td.r:empty { min-width: 0; border-left: 0; padding: 0; }
+#ex1Proof table.proof td.r { min-width: 7em; }
+.lines2 .figbox.small .fig { max-height: 30vh; }
+#exQProof table.proof td.r, #quadProof table.proof td.r { font-size: 1rem; min-width: 7em; }
+#exQProof table.proof td.r:empty, #quadProof table.proof td.r:empty, #ex1Proof table.proof td.r:empty { min-width: 0; border-left: 0; padding: 0; }
+.lines3 .figbox .fig { max-height: 30vh; }
+</style>
+</head>
+<!-- data-reading links back to the reading version (the 5.2 page of the self-study site). -->
+<body data-reading="index.html#/s/5.2">
+
+<!-- 1 Title -->
+<section class="scene blue title">
+  <span class="cross-v"></span><span class="cross-h"></span>
+  <div class="body">
+    <p class="kicker in" style="--i:5">F1 MATHEMATICS · CH5 INTRODUCTION TO GEOMETRY · SECTION 5.2</p>
+    <h1 class="display huge in" style="--i:7">Plane Figures</h1>
+    <p class="in" style="--i:9">Triangles, polygons and circles.</p>
+    <p class="kicker in" style="--i:14">Scroll down to begin</p>
+  </div>
+  <div class="foot bare"><h2></h2></div>
+</section>
+
+<!-- 2 Triangles by sides -->
+<section class="scene">
+  <div class="body">
+    <p class="in" style="--i:1">Look at the <strong>sides</strong>. The same marks show equal sides.</p>
+    <div class="lines3">
+      <div class="in" style="--i:2"><div class="figbox small" id="sideFig1"></div><p class="cap" data-step="1">Equilateral triangle</p><p class="sub" data-step="1">All sides are equal.</p></div>
+      <div class="in" style="--i:3"><div class="figbox small" id="sideFig2"></div><p class="cap" data-step="2">Isosceles triangle</p><p class="sub" data-step="2">Two sides are equal.</p></div>
+      <div class="in" style="--i:4"><div class="figbox small" id="sideFig3"></div><p class="cap" data-step="3">Scalene triangle</p><p class="sub" data-step="3">All sides are unequal.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.2 | Triangles: by sides</h2></div>
+</section>
+
+<!-- 3 Triangles by angles -->
+<section class="scene">
+  <div class="body">
+    <p class="in" style="--i:1">Now look at the <strong>angles</strong>.</p>
+    <div class="lines3">
+      <div class="in" style="--i:2"><div class="figbox small" id="angFig1"></div><p class="cap" data-step="1">Acute-angled triangle</p><p class="sub" data-step="1">All angles are acute.</p></div>
+      <div class="in" style="--i:3"><div class="figbox small" id="angFig2"></div><p class="cap" data-step="2">Right-angled triangle</p><p class="sub" data-step="2">One angle is a right angle.</p></div>
+      <div class="in" style="--i:4"><div class="figbox small" id="angFig3"></div><p class="cap" data-step="3">Obtuse-angled triangle</p><p class="sub" data-step="3">One angle is obtuse.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.2 | Triangles: by angles</h2></div>
+</section>
+
+<!-- 4 Work: two names -->
+<section class="scene">
+  <div class="body">
+    <div class="pair">
+      <div class="figbox in" style="--i:1" id="setSqFig"></div>
+      <div class="rows compact">
+        <div class="row in" style="--i:2"><div><div class="who">Alone</div><button class="timer" data-sec="60"></button></div><p class="q">Name this triangle by its sides, and by its angles.</p></div>
+        <p class="note" data-step="1">The next screen shows both names. Are two names written down?</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.2 | Two names</h2></div>
+</section>
+
+<!-- 5 Reveal -->
+<section class="scene blue">
+  <div class="body">
+    <p class="kicker in" style="--i:1">TWO EQUAL SIDES · ONE RIGHT ANGLE</p>
+    <p class="display huge in" style="--i:2">An isosceles right-angled triangle</p>
+    <div class="rule" data-step="1"><p>Every triangle has two names: one from its sides, one from its angles.</p></div>
+  </div>
+  <div class="foot"><h2>5.2 | Two names</h2></div>
+</section>
+
+<!-- 6 Angle sum: prediction -->
+<section class="scene">
+  <div class="body">
+    <div class="pair">
+      <div class="figbox in" style="--i:1" id="sumFigQ"></div>
+      <div class="stack">
+        <p class="q in" style="--i:2">Cut off the three corners of a paper triangle and put them together at one point.</p>
+        <p class="display blue-text" style="font-size:2.5rem;margin:0" data-step="1">What will the three angles make?</p>
+        <div class="btns choice" data-step="1"><button class="btn">A right angle</button><button class="btn">A straight angle</button><button class="btn">A round angle</button></div>
+        <p class="note" data-step="2">The next screen tries it. Has everyone chosen?</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.2 | Three corners</h2></div>
+</section>
+
+<!-- 7 Angle sum: the corners move together (animation) -->
+<section class="scene" data-enter="tear">
+  <div class="body">
+    <div class="in" style="--i:1"><svg id="tearSvg" viewBox="0 0 1000 540" role="img" aria-label="The three corners of triangle ABC move to one point on a line, where they fit together into a straight angle"></svg></div>
+    <div class="btns in" style="--i:2"><button class="btn" onclick="Live.replay('tear')">Try another triangle</button><p class="status" id="tearStatus"></p></div>
+    <p class="display big blue-text" data-step="1">$\angle BAC + \angle ABC + \angle ACB = 180^\circ$</p>
+    <p data-step="1">The sum of the interior angles of a triangle is $180^\circ$. Reason: <strong>∠ sum of △</strong></p>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.2 | Angle sum of a triangle</h2></div>
+</section>
+
+<!-- 7b Why it is always 180°: a proof with a parallel line -->
+<section class="scene">
+  <div class="body tight">
+    <div class="pair wide-proof">
+      <div class="stack">
+        <p class="display blue-text in" style="--i:1;font-size:2.4rem;margin:0">Why is it always $180^\circ$?</p>
+        <div class="figbox in" style="--i:2" id="whyFig"></div>
+      </div>
+      <div class="stack">
+        <div class="in" style="--i:3" id="whyProof"></div>
+        <p class="note" data-step="5">Cutting corners shows it for one triangle. This argument works for <strong>every</strong> triangle. You will learn the two new reasons properly in a later chapter.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.2 | Why 180°?</h2></div>
+</section>
+
+<!-- 8 Worked together: how to write it -->
+<section class="scene">
+  <div class="body">
+    <div class="pair wide-proof">
+      <div class="stack">
+        <p class="q in" style="--i:1">Find $\angle ABC$.</p>
+        <div class="figbox in" style="--i:2" id="ex1Fig"></div>
+      </div>
+      <div class="stack">
+        <div class="in" style="--i:3" id="ex1Proof"></div>
+        <p class="note" data-step="5">Name the triangle, write the equation with its reason, then solve.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.2 | Together</h2></div>
+</section>
+
+<!-- 9 Work: two to try -->
+<section class="scene">
+  <div class="body">
+    <div class="lines2">
+      <div class="in" style="--i:1"><div class="figbox small" id="tryFig1"></div><p class="cap">(a) Find $x$.</p></div>
+      <div class="in" style="--i:2"><div class="figbox small" id="tryFig2"></div><p class="cap">(b) Find $y$.</p></div>
+    </div>
+    <div class="row in" style="--i:3"><div><div class="who">Alone</div><button class="timer" data-sec="180"></button></div><p class="q">Write "In △…," then the equation with its reason.</p></div>
+    <p class="note" data-step="1">The next screen shows the answers. Are both written down?</p>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.2 | Angle sum: try</h2></div>
+</section>
+
+<!-- 10 Reveal -->
+<section class="scene blue">
+  <div class="body">
+    <div class="answers two-col">
+      <span class="in" style="--i:1">(a) $x + 67^\circ + 41^\circ = 180^\circ$</span><span class="in" style="--i:2">$x = 72^\circ$</span>
+      <span class="in" style="--i:3">(b) $y + y + 124^\circ = 180^\circ$</span><span class="in" style="--i:4">$y = 28^\circ$</span>
+    </div>
+    <div class="rule" data-step="1"><p>In (b), $2y = 56^\circ$. Do not stop there: $y$ is half of it.</p></div>
+  </div>
+  <div class="foot"><h2>5.2 | Angle sum: answers</h2></div>
+</section>
+
+<!-- 11 Problem: two triangles in one figure -->
+<section class="scene">
+  <div class="body">
+    <div class="pair wide-fig">
+      <div class="figbox in" style="--i:1" id="exQFigQ"></div>
+      <div class="rows compact">
+        <div class="row in" style="--i:2"><div><div class="who">Alone</div><button class="timer" data-sec="240"></button></div><p class="q">$QRS$ is a straight line. Find $x$ and $y$.</p></div>
+        <div class="row" data-step="1"><div><div class="who">Hint</div></div><p class="q">Start with the triangle that has only <strong>one</strong> unknown angle.</p></div>
+        <div class="row" data-step="2"><div><div class="who">Commit</div></div>
+          <div><p class="q">Our $y$ is</p><div class="btns choice" style="margin-top:.6rem"><button class="btn">$27^\circ$</button><button class="btn">$47^\circ$</button><button class="btn">$74^\circ$</button><button class="btn">something else</button></div></div></div>
+        <p class="note" data-step="3">The next screen shows the solution. Has everyone committed?</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.2 | Two triangles</h2></div>
+</section>
+
+<!-- 12 Solution -->
+<section class="scene">
+  <div class="body tight">
+    <div class="pair wide-proof">
+      <div class="figbox in" style="--i:1" id="exQFig"></div>
+      <div class="in" style="--i:2" id="exQProof"></div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.2 | Two triangles: solution</h2></div>
+</section>
+
+<!-- 13 Polygons and diagonals -->
+<section class="scene">
+  <div class="body">
+    <div class="pair">
+      <div class="figbox in" style="--i:1" id="diagFig"></div>
+      <div class="stack">
+        <p class="q in" style="--i:2">A <strong>polygon</strong> is a closed plane figure with straight sides.</p>
+        <p class="q lit" data-step="1" id="dg1">A <strong>diagonal</strong> joins two vertices that are not next to each other.</p>
+        <p class="q lit" data-step="2" id="dg2">From $A$ there are two diagonals: $AC$ and $AD$.</p>
+        <p class="display blue-text" style="font-size:2.4rem;margin:0" data-step="3">How many diagonals does a pentagon have altogether?</p>
+        <p class="note" data-step="4">The next screen shows the count. Is a number written down?</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.2 | Polygons</h2></div>
+</section>
+
+<!-- 13b Reveal: the diagonals of a pentagon -->
+<section class="scene blue">
+  <div class="body">
+    <p class="kicker in" style="--i:1">A PENTAGON HAS</p>
+    <p class="display huge in" style="--i:2">5 diagonals</p>
+    <div class="rule" data-step="1"><p>2 from each of the 5 vertices makes 10, but every diagonal has two ends, so each was counted twice: $5 \times 2 \div 2 = 5$.</p></div>
+  </div>
+  <div class="foot"><h2>5.2 | Polygons</h2></div>
+</section>
+
+<!-- 14 Convex and concave -->
+<section class="scene">
+  <div class="body">
+    <p class="in" style="--i:1">Look at the interior angles.</p>
+    <div class="lines2">
+      <div class="in" style="--i:2"><div class="figbox small" id="cvxFig"></div><p class="cap" data-step="1">Convex polygon</p><p class="sub" data-step="1">All interior angles are less than $180^\circ$.</p></div>
+      <div class="in" style="--i:3"><div class="figbox small" id="ccvFig"></div><p class="cap" data-step="2">Concave polygon</p><p class="sub" data-step="2">At least one interior angle is greater than $180^\circ$.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.2 | Convex, concave</h2></div>
+</section>
+
+<!-- 15 Equilateral, equiangular, regular -->
+<section class="scene">
+  <div class="body">
+    <div class="lines3">
+      <div class="in" style="--i:1"><div class="figbox small" id="eqsFig"></div><p class="cap" data-step="1">Equilateral polygon</p><p class="sub" data-step="1">All sides are equal.</p></div>
+      <div class="in" style="--i:2"><div class="figbox small" id="eqaFig"></div><p class="cap" data-step="2">Equiangular polygon</p><p class="sub" data-step="2">All interior angles are equal.</p></div>
+      <div class="in" style="--i:3"><div class="figbox small" id="regFig"></div><p class="cap" data-step="3">Regular polygon</p><p class="sub" data-step="3">All sides equal <strong>and</strong> all angles equal.</p></div>
+    </div>
+    <p class="display big blue-text" data-step="4">Regular means both.</p>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.2 | Regular polygons</h2></div>
+</section>
+
+<!-- 16 Work: classify four polygons -->
+<section class="scene">
+  <div class="body">
+    <div class="figbox small in" style="--i:1" id="fourFig"></div>
+    <div class="row in" style="--i:2"><div><div class="who">Pairs</div><button class="timer" data-sec="150"></button></div>
+      <p class="q">Which of I to IV are (a) convex? &nbsp;(b) equilateral? &nbsp;(c) equiangular? &nbsp;(d) regular?</p></div>
+    <p class="note" data-step="1">The next screen shows the answers. Are all four parts answered?</p>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.2 | Classify</h2></div>
+</section>
+
+<!-- 17 Reveal -->
+<section class="scene blue">
+  <div class="body">
+    <div class="answers two-col">
+      <span class="in" style="--i:1">(a) convex: I, II, IV</span><span class="in" style="--i:2">(b) equilateral: I, II</span>
+      <span class="in" style="--i:3">(c) equiangular: I, IV</span><span class="in" style="--i:4">(d) regular: I only</span>
+    </div>
+    <div class="rule" data-step="1"><p>II has equal sides only. IV has equal angles only. Neither is regular.</p></div>
+  </div>
+  <div class="foot"><h2>5.2 | Classify: answers</h2></div>
+</section>
+
+<!-- 18 Circles: each press lights one part -->
+<section class="scene">
+  <div class="body">
+    <div class="pair">
+      <div class="in" style="--i:1"><svg id="circSvg" viewBox="0 0 600 460" role="img" aria-label="A circle with centre O, radius OP and diameter AB"></svg></div>
+      <div class="stack">
+        <p class="q in" style="--i:2">A circle is a plane figure, but not a polygon.</p>
+        <p class="q lit" data-step="1" id="ci1"><strong>Centre</strong> $O$: the same distance from every point on the circle</p>
+        <p class="q lit" data-step="2" id="ci2"><strong>Radius</strong> $OP$: from the centre to the circle</p>
+        <p class="q lit" data-step="3" id="ci3"><strong>Diameter</strong> $AB$: across the circle, through the centre</p>
+        <p class="q lit" data-step="4" id="ci4"><strong>Circumference</strong>: the curve itself, and its length</p>
+        <p class="note" data-step="5">diameter $= 2 \times$ radius</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.2 | Circles</h2></div>
+</section>
+
+<!-- 19 Work: circle -->
+<section class="scene">
+  <div class="body">
+    <div class="pair">
+      <div class="figbox in" style="--i:1" id="circQFig"></div>
+      <div class="rows compact">
+        <div class="row in" style="--i:2"><div><div class="who">Alone</div><button class="timer" data-sec="90"></button></div>
+          <div><p class="q">$O$ is the centre and $OC = 4$ cm.</p><p class="q">Find $OA$ and $AB$.</p></div></div>
+        <div class="row" data-step="1"><div><div class="who">Choose</div></div>
+          <div><p class="q">Is $CD$ a diameter?</p><div class="btns choice" style="margin-top:.6rem"><button class="btn">Yes</button><button class="btn">No</button></div></div></div>
+        <p class="note" data-step="2">The next screen shows the answers. Has everyone chosen?</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.2 | Circles: try</h2></div>
+</section>
+
+<!-- 20 Reveal -->
+<section class="scene blue">
+  <div class="body">
+    <div class="answers two-col">
+      <span class="in" style="--i:1">$OA = 4$ cm</span><span class="in" style="--i:2">$AB = 8$ cm</span>
+    </div>
+    <div class="rule" data-step="1">
+      <p class="display big">$CD$ is not a diameter.</p>
+      <p>It joins two points on the circle, but it does not pass through the centre.</p>
+    </div>
+  </div>
+  <div class="foot"><h2>5.2 | Circles: answers</h2></div>
+</section>
+
+<!-- 21 Harder: a quadrilateral (teams) -->
+<section class="scene">
+  <div class="body">
+    <div class="pair wide-fig">
+      <div class="figbox layer in" style="--i:1"><div id="quadFigQ"></div><div id="quadFigHint" data-step="2"></div></div>
+      <div class="rows compact">
+        <div class="row in" style="--i:2"><div><div class="who">Teams</div><button class="timer" data-sec="240"></button></div><p class="q">Find $\angle ABC + \angle ADC$.</p></div>
+        <div class="row" data-step="1"><div><div class="who">Think</div></div><p class="q">We only know the angle sum of a <strong>triangle</strong>. Where are the triangles?</p></div>
+        <div class="row" data-step="2"><div><div class="who">Hint</div></div><p class="q">Draw the diagonal $BD$.</p></div>
+        <p class="note" data-step="3">The next screen shows the solution. Has every team an answer?</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.2 | A quadrilateral</h2></div>
+</section>
+
+<!-- 22 Solution -->
+<section class="scene">
+  <div class="body tight">
+    <div class="pair wide-proof">
+      <div class="figbox in" style="--i:1" id="quadFig"></div>
+      <div class="stack">
+        <div class="in" style="--i:2" id="quadProof"></div>
+        <p class="note" data-step="8">Any quadrilateral can be cut into two triangles, so its four angles add up to $360^\circ$.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.2 | A quadrilateral: solution</h2></div>
+</section>
+
+<!-- 23 Today -->
+<section class="scene">
+  <div class="body">
+    <div class="rules">
+      <div class="r1 in" style="--i:1"><span class="n">1</span><div><p>The angles of a triangle add up to $180^\circ$.</p><p class="sub">Write "In $\triangle ABC$," then the equation, with the reason <strong>∠ sum of △</strong>.</p></div></div>
+      <div class="r1" data-step="1"><span class="n">2</span><div><p>Start where there is only one unknown.</p><p class="sub">Every triangle has two names. Find all three angles before naming it by angles.</p></div></div>
+      <div class="r1" data-step="2"><span class="n">3</span><div><p>Read the marks, not the look.</p><p class="sub">Regular means equal sides <strong>and</strong> equal angles. A diameter must pass through the centre.</p></div></div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.2 | Today</h2></div>
+</section>
+
+<!-- 24 After class -->
+<section class="scene blue">
+  <div class="body">
+    <p class="display huge in" style="--i:1">After class</p>
+    <p class="in" style="--i:2">On the self-study site, section 5.2: <strong>Practice</strong> (13 questions, one with new numbers each time) and <strong>Traps</strong>.</p>
+    <p class="in" style="--i:3">Then the <strong>Sorting Game</strong>: the two triangle decks and the polygon deck.</p>
+    <p class="kicker in" style="--i:5">NEXT: 5.3 BASIC CONSTRUCTIONS</p>
+  </div>
+  <div class="foot"><h2>5.2 | Practise</h2></div>
+</section>
+
+<script src="vendor/katex/katex.min.js?v=4881bfc9"></script>
+<script src="js/core.js?v=b91bfc72"></script>
+<script src="js/geom.js?v=c6a92979"></script>
+<script src="js/check.js?v=c7d26bad"></script>
+<script src="js/question.js?v=2445e9af"></script>
+<script src="js/demos.js?v=7add0618"></script>
+<script src="data/helpers.js?v=02530cf8"></script>
+<script src="data/s52.js?v=43ccfbe6"></script>
+<script src="live/live.js?v=f7602a1f"></script>
+<script src="live/lesson.js?v=de8784ec"></script>
+<script>
+'use strict';
+/* ---------- 1. Maths and helpers: live/lesson.js ---------- */
+const { $, C, onShown, figInto, solution, litFigure, litParts } = L5;
+const SEC = C5.sections['5.2'];
+const practice = id => SEC.practice.find(q => q.id === id);
+const tri = (ang, extra) => Object.assign({ w: 150, h: 120, noLabels: true, mono: true, make: [{ tri: 'ABC', ang }], polys: ['ABC'], arcR: 12 }, extra);
+
+/* ---------- 2. Figures (the same figures as the reading version, data/s52.js) ---------- */
+figInto('sideFig1', tri([60, 60, 60], { ticks: { AB: 1, BC: 1, CA: 1 } }));
+figInto('sideFig2', tri([40, 70, 70], { ticks: { AB: 1, CA: 1 } }));
+figInto('sideFig3', tri([75, 62, 43]));
+figInto('angFig1', tri([70, 62, 48], { arcs: { CAB: 1, ABC: 1, BCA: 1 } }));
+figInto('angFig2', tri([35, 90, 55], { rights: ['ABC'] }));
+figInto('angFig3', tri([30, 115, 35], { arcs: { ABC: 1 } }));
+figInto('setSqFig', { w: 260, h: 190, noLabels: true, mono: true, make: [{ tri: 'ABC', ang: [45, 90, 45] }], polys: ['ABC'], rights: ['ABC'], ticks: { AB: 1, BC: 1 }, at: { CAB: '45°', BCA: '45°' } });
+figInto('sumFigQ', { w: 300, h: 190, make: [{ tri: 'ABC', ang: [72, 63, 45] }], polys: ['ABC'], arcs: { CAB: 1, ABC: 2, BCA: 3 }, arcR: 20 }, [['CAB', 1], ['ABC', 2], ['BCA', 3]]);
+
+// Why 180°: the line DAE through A is parallel to BC, so the angles at B and C reappear beside the angle at A
+solution('whyFig', 'whyProof',
+  { w: 320, h: 200, pts: { A: [125, 45], B: [40, 170], C: [285, 170], D: [25, 45], E: [300, 45] }, polys: ['ABC'], lines: ['DAE'], arrows: { AE: 1, BC: 1 },
+    arcs: { BAC: 1, ABC: 1, ACB: 1, DAB: 1, EAC: 1 }, cols: { ABC: 2, DAB: 2, ACB: 3, EAC: 3 }, arcR: 22, lab: { A: [0, -14] } },
+  [
+    { t: 'Draw the line $DAE$ through $A$, parallel to $BC$.', fixed: true },
+    { s: '∠DAB = ∠ABC', r: 'alt. ∠s, DE // BC', hl: [['DAB', 'ABC', 2]] },
+    { s: '∠EAC = ∠ACB', r: 'alt. ∠s, DE // BC', hl: [['EAC', 'ACB', 3]] },
+    { s: '∠DAB + ∠BAC + ∠EAC = 180°', r: 'adj. ∠s on st. line', hl: [['DAB', 2], ['BAC', 1], ['EAC', 3]] },
+    { s: '∴ ∠ABC + ∠BAC + ∠ACB = 180°', hl: [['ABC', 2], ['BAC', 1], ['ACB', 3]] },
+  ]);
+
+const EX1 = SEC.examples[0];
+solution('ex1Fig', 'ex1Proof', EX1.fig, EX1.steps.map((s, i) => (i === 0 ? Object.assign({ fixed: true }, s) : s)));
+figInto('tryFig1', practice('52-2').fig);
+figInto('tryFig2', practice('52-3').fig);
+
+const EXQ = SEC.examples[2];
+figInto('exQFigQ', EXQ.fig);
+solution('exQFig', 'exQProof', EXQ.fig, EXQ.steps.map((s, i) => (i === 0 ? Object.assign({ fixed: true }, s) : s)));
+
+const PENT = { w: 300, h: 185, pts: HP.regular('ABCDE', [150, 95], 70), polys: ['ABCDE'] };
+litFigure('diagFig', Object.assign({ lines: ['AC', 'AD'], dashed: ['AC', 'AD'] }, PENT), [['dg1', [['AC', 1]]], ['dg2', [['AC', 1], ['AD', 2]]]]);
+figInto('cvxFig', { w: 200, h: 150, noLabels: true, mono: true, pts: { A: [50, 35], B: [140, 22], C: [175, 88], D: [112, 135], E: [30, 100] }, polys: ['ABCDE'] });
+figInto('ccvFig', { w: 200, h: 150, noLabels: true, pts: { A: [100, 15], B: [175, 135], C: [100, 88], D: [25, 135] }, polys: ['ABCD'], reflex: ['BCD'], arcs: { BCD: 1 }, cols: { BCD: 2 }, arcR: 13 });
+figInto('eqsFig', { w: 150, h: 120, noLabels: true, mono: true, pts: { A: [75, 20], B: [135, 60], C: [75, 100], D: [15, 60] }, polys: ['ABCD'], ticks: { AB: 1, BC: 1, CD: 1, DA: 1 } });
+figInto('eqaFig', { w: 150, h: 120, noLabels: true, mono: true, pts: { A: [20, 30], B: [130, 30], C: [130, 90], D: [20, 90] }, polys: ['ABCD'], rights: ['DAB', 'ABC', 'BCD', 'CDA'] });
+figInto('regFig', { w: 150, h: 120, noLabels: true, mono: true, arcR: 10, pts: HP.regular('ABCDE', [75, 64], 48), polys: ['ABCDE'], ticks: { AB: 1, BC: 1, CD: 1, DE: 1, EA: 1 }, arcs: { EAB: 1, ABC: 1, BCD: 1, CDE: 1, DEA: 1 } });
+figInto('fourFig', SEC.examples[5].fig);
+figInto('circQFig', practice('52-12').fig);
+
+const QUAD = SEC.examples[4];
+figInto('quadFigQ', Object.assign({}, QUAD.fig, { lines: [] }));
+figInto('quadFigHint', QUAD.fig);
+solution('quadFig', 'quadProof', QUAD.fig, QUAD.steps.map((s, i) => (i === 0 ? Object.assign({ fixed: true }, s) : s)));
+
+/* ---------- 3. Circles: each line lights its part of the drawing ---------- */
+(function () {
+  const svg = $('circSvg'), O = [300, 235], r = 185, P = DEMO.polar(O, r, 50), A = [O[0] - r, O[1]], B = [O[0] + r, O[1]];
+  const mk = (t, a, txt) => { const e = Live.svg(t, a, txt); svg.appendChild(e); return e; };
+  const layer = mk('g', { opacity: .3 });
+  mk('circle', { cx: O[0], cy: O[1], r, fill: 'none', stroke: 'var(--ink)', 'stroke-width': 4 });
+  mk('line', { x1: A[0], y1: A[1], x2: B[0], y2: B[1], stroke: 'var(--ink)', 'stroke-width': 4 });
+  mk('line', { x1: O[0], y1: O[1], x2: P[0].toFixed(1), y2: P[1].toFixed(1), stroke: 'var(--ink)', 'stroke-width': 4 });
+  mk('circle', { cx: O[0], cy: O[1], r: 7, fill: 'var(--ink)' });
+  [['O', O, -6, 32], ['P', P, 22, -20], ['A', A, -28, 0], ['B', B, 28, 0]].forEach(([L, p, dx, dy]) => mk('text', { x: p[0] + dx, y: p[1] + dy }, L));
+  const band = (a, b, c) => Live.svg('line', { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: c, 'stroke-width': 26, 'stroke-linecap': 'round' });
+  litParts(layer, [
+    { el: $('ci1'), c: 1, draw: c => Live.svg('circle', { cx: O[0], cy: O[1], r: 28, fill: c }) },
+    { el: $('ci2'), c: 2, draw: c => band(O, P, c) },
+    { el: $('ci3'), c: 3, draw: c => band(A, B, c) },
+    { el: $('ci4'), c: 1, draw: c => Live.svg('circle', { cx: O[0], cy: O[1], r, fill: 'none', stroke: c, 'stroke-width': 26 }) },
+  ]);
+})();
+
+/* ---------- 4. Animation: the three corners of a triangle come together ----------
+   Each corner is a coloured wedge. The wedges at B and C only slide; the one at A turns half a turn on its way.
+   "Try another triangle" plays it again with a different triangle. */
+(function () {
+  const svg = $('tearSvg'), status = $('tearStatus'), R = 112;
+  const Bp = [200, 290], Cp = [760, 290], T = [480, 500];
+  const TOPS = [[380, 60], [620, 90], [250, 120]];
+  let turn = -1;
+  const deg = (dy, dx) => Math.atan2(dy, dx) * 180 / Math.PI;
+  function build(Ap) {
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    const mk = (t, a, txt) => { const e = Live.svg(t, a, txt); svg.appendChild(e); return e; };
+    const b = deg(Bp[1] - Ap[1], Ap[0] - Bp[0]), c = 180 - deg(Cp[1] - Ap[1], Ap[0] - Cp[0]), a = 180 - b - c;
+    const base = mk('line', { x1: T[0] - 220, y1: T[1], x2: T[0] + 220, y2: T[1], stroke: 'var(--ink)', 'stroke-width': 4, 'stroke-linecap': 'round', opacity: 0 });
+    const wedge = (size, col) => {
+      const path = mk('path', { fill: col, 'fill-opacity': .3, stroke: 'var(--ink)', 'stroke-width': 3, 'stroke-linejoin': 'round' });
+      return (pos, rot) => path.setAttribute('d', `M${pos[0].toFixed(1)} ${pos[1].toFixed(1)} L${DEMO.arcPath(pos, R, rot, rot + size).slice(1)} Z`);
+    };
+    const wA = wedge(a, C(1)), wB = wedge(b, C(2)), wC = wedge(c, C(3));
+    mk('polygon', { points: [Ap, Bp, Cp].map(p => p.join(',')).join(' '), fill: 'none', stroke: 'var(--ink)', 'stroke-width': 4, 'stroke-linejoin': 'round' });
+    mk('text', { x: Ap[0], y: Ap[1] - 30 }, 'A'); mk('text', { x: Bp[0] - 30, y: Bp[1] + 10 }, 'B'); mk('text', { x: Cp[0] + 30, y: Cp[1] + 10 }, 'C');
+    const mix = (p, q, t) => [p[0] + (q[0] - p[0]) * t, p[1] + (q[1] - p[1]) * t];
+    return {
+      base,
+      B: t => wB(mix(Bp, T, t), 0),
+      A: t => wA(mix(Ap, T, t), 180 + b - 180 * t),
+      C: t => wC(mix(Cp, T, t), 180 - c),
+    };
+  }
+  let g = build(TOPS[0]);
+  g.A(0); g.B(0); g.C(0);
+  Live.onEnter('tear', async alive => {
+    turn = (turn + 1) % TOPS.length;
+    g = build(TOPS[turn]);
+    g.A(0); g.B(0); g.C(0);
+    status.textContent = '';
+    const say = t => { if (alive()) status.textContent = t; };
+    const move = (k, ms) => Live.tween(ms, p => g[k](Live.ease(p)), alive);
+    await Live.wait(900, alive); if (!alive()) return;
+    say('The corner at B slides down.');
+    await move('B', 1500); if (!alive()) return;
+    say('The corner at A turns half a turn.');
+    await move('A', 2000); if (!alive()) return;
+    say('The corner at C slides across.');
+    await move('C', 1500); if (!alive()) return;
+    await Live.tween(600, p => g.base.setAttribute('opacity', p), alive);
+    say('Together they make a straight angle.');
+  });
+})();
+</script>
+</body>
+</html>

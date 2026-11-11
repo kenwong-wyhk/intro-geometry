@@ -117,6 +117,47 @@ const L5 = (() => {
     };
   }
 
+  /* Lines of text that light parts of a hand-made drawing. items: [{ el, c, draw(colour) -> node or [nodes] }].
+     The latest line shown is "now": its parts are drawn into `layer` and its band takes colour c (1, 2 or 3). */
+  function litParts(layer, items) {
+    let current = null;
+    const update = () => {
+      let last = -1;
+      items.forEach((it, i) => { if (it.el.classList.contains('shown')) last = i; });
+      if (last === current) return;
+      if (current !== null && current >= 0) items[current].el.classList.remove('now');
+      current = last;
+      while (layer.firstChild) layer.removeChild(layer.firstChild);
+      if (last >= 0) {
+        [].concat(items[last].draw(C(items[last].c))).forEach(n => layer.appendChild(n));
+        items[last].el.dataset.c = items[last].c;
+        items[last].el.classList.add('now');
+      }
+    };
+    items.forEach(it => new MutationObserver(update).observe(it.el, { attributes: true, attributeFilter: ['class'] }));
+    update();
+  }
+
+  /* A construction from js/construct.js, one step per press. The drawing goes into figId and the words for the
+     current step into textId. The presses are hidden markers added to the scene, so Back undoes a step. */
+  function cons(figId, textId, consId) {
+    const box = CONS.render([consId]);
+    const fig = $(figId), scene = fig.closest('.scene');
+    fig.append(box.querySelector('svg'));
+    $(textId).append(box.stepText);
+    const marks = [];
+    for (let i = 1; i < box.count(); i++) {
+      const m = document.createElement('span');
+      m.dataset.step = i; m.style.display = 'none';
+      scene.querySelector('.body').append(m);
+      marks.push(m);
+    }
+    let shown = 0;
+    const update = () => { const n = marks.filter(m => m.classList.contains('shown')).length; if (n !== shown) { shown = n; box.go(n); } };
+    marks.forEach(m => new MutationObserver(update).observe(m, { attributes: true, attributeFilter: ['class'] }));
+    return box;
+  }
+
   /* Maths: render every $...$ in the scenes. Punctuation straight after maths is kept with it,
      so a line never starts with a lone "." or "?". */
   document.querySelectorAll('.scene').forEach(s => {
@@ -126,5 +167,5 @@ const L5 = (() => {
   // ∠ △ ≅ in ordinary text (reasons such as "base ∠s, isos. △") come from the maths font through
   // css/fonts.css, as on the reading site, so they match the maths at full size.
 
-  return { $, C, onShown, figInto, hlList, lightFrom, solution, litFigure, splitFig };
+  return { $, C, onShown, figInto, hlList, lightFrom, solution, litFigure, splitFig, litParts, cons };
 })();

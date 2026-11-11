@@ -271,16 +271,68 @@ const DEMO = (() => {
     [[[0, 0, 0], [3, 0, 0]], [[3, 0, 0], [3, 2, 0]], [[3, 2, 0], [0, 2, 0]], [[0, 2, 0], [0, 0, 0]], [[3, 0, 0], [3, 0, 1]], [[3, 2, 0], [3, 2, 1]], [[0, 2, 0], [0, 2, 1]], [[3, 0, 1], [3, 2, 1]], [[3, 2, 1], [0, 2, 1]]].forEach(([a, b]) => edge(P(...a), P(...b)));
     [[[0, 0, 0], [0, 0, 1]], [[0, 0, 1], [3, 0, 1]], [[0, 0, 1], [0, 2, 1]]].forEach(([a, b]) => edge(P(...a), P(...b), true));
     // the same cuboid on the isometric grid
-    const q = [180 + 4 * dx, 10 + 6.5 * t], Q = (i, j, k) => [q[0] + i * dx - k * dx, q[1] - i * t / 2 - k * t / 2 - j * t];
+    // the corner nearest the viewer sits on a grid point: in column 4 the points are at whole multiples of t
+    const q = [180 + 4 * dx, 10 + 7 * t], Q = (i, j, k) => [q[0] + i * dx - k * dx, q[1] - i * t / 2 - k * t / 2 - j * t];
     const vis = [[[0, 0, 0], [3, 0, 0]], [[0, 0, 0], [0, 0, 2]], [[0, 0, 0], [0, 2, 0]], [[3, 0, 0], [3, 2, 0]], [[0, 0, 2], [0, 2, 2]], [[0, 2, 0], [3, 2, 0]], [[0, 2, 0], [0, 2, 2]], [[3, 2, 0], [3, 2, 2]], [[0, 2, 2], [3, 2, 2]]];
     vis.forEach(([a, b]) => edge(Q(...a), Q(...b)));
     [[[3, 0, 2], [3, 0, 0]], [[3, 0, 2], [0, 0, 2]], [[3, 0, 2], [3, 2, 2]]].forEach(([a, b]) => edge(Q(...a), Q(...b), true));
+    // the lengths of the cuboid (3 by 2 by 2). On the oblique grid its depth of 2 units is ONE slanted grid line.
+    const num = (x, y, v) => { mk('text', { x: f2(x), y: f2(y), class: 'txt' }, svg).textContent = v; };
+    num(o[0] + 1.5 * s, o[1] + 9, 3); num(o[0] - 7, o[1] - s, 2); num(o[0] + 3.5 * s + 7, o[1] - s / 2 + 4, 2);
+    num(q[0] + 1.5 * dx + 5, q[1] - 0.75 * t + 9, 3); num(q[0] - dx - 5, q[1] - 0.5 * t + 9, 2); num(q[0] - 2 * dx - 7, q[1] - 2 * t, 2);
     mk('text', { x: 85, y: 174, class: 'tag' }, svg).textContent = 'Oblique grid paper';
     mk('text', { x: 255, y: 174, class: 'tag' }, svg).textContent = 'Isometric grid paper';
     box.append(U.el('div', { class: 'fig-wrap' }, svg),
-      U.el('p', { class: 'small', text: 'On the oblique grid the front face is a true rectangle. On the isometric grid no face keeps its true shape, but all three directions follow the grid lines.' }));
+      U.el('p', { class: 'small', html: 'The cuboid is 3 by 2 by 2. On the oblique grid the front face is a true rectangle, and the depth of 2 units is drawn as <b>one</b> slanted grid line. On the isometric grid no face keeps its true shape, but all three directions follow the grid lines, one grid line for each unit.' }));
     return box;
   }
 
-  return { angleSvg, angleInto, angleRow, arcPath, polar, dial, angleSum, slicer, grids, typeOf, TYPES, svgPoint };
+  /* ---------- parts of a circle: tap a word to light it on the figure ---------- */
+  function circleTerms() {
+    const box = U.el('div', { class: 'demo' });
+    box.append(U.el('div', { class: 'demo-title', text: 'Parts of a circle' }),
+      U.el('p', { class: 'small', text: 'Tap a word to see that part of the circle. Tap it again to switch it off.' }));
+    const svg = mk('svg', { viewBox: '0 0 300 210', class: 'fig', role: 'img', 'aria-label': 'A circle with centre O, radius OP and diameter AB' });
+    svg.style.maxWidth = '460px';
+    const O = [150, 105], r = 80, P = polar(O, r, 50), A = [O[0] - r, O[1]], B = [O[0] + r, O[1]];
+    const hl = mk('g', {}, svg);
+    mk('circle', { cx: O[0], cy: O[1], r, class: 'seg' }, svg);
+    mk('line', { x1: A[0], y1: A[1], x2: B[0], y2: B[1], class: 'seg' }, svg);
+    mk('line', { x1: O[0], y1: O[1], x2: f2(P[0]), y2: f2(P[1]), class: 'seg' }, svg);
+    mk('circle', { cx: O[0], cy: O[1], r: 2.8, class: 'dot' }, svg);
+    [['O', O, -3, 14], ['P', P, 9, -9], ['A', A, -12, 0], ['B', B, 12, 0]].forEach(([L, p, dx, dy]) => { mk('text', { x: f2(p[0] + dx), y: f2(p[1] + dy), class: 'lbl' }, svg).textContent = L; });
+    const band = (a, b, c) => mk('line', { x1: f2(a[0]), y1: f2(a[1]), x2: f2(b[0]), y2: f2(b[1]), class: 'hl hl-line', stroke: c }, hl);
+    const TERMS = [
+      { name: 'Centre', col: 1, draw: c => mk('circle', { cx: O[0], cy: O[1], r: 11, class: 'hl', fill: c }, hl),
+        text: 'The <b>centre</b> $O$ is the point in the middle. Every point on the circle is the same distance from it.' },
+      { name: 'Radius', col: 2, draw: c => band(O, P, c),
+        text: 'A <b>radius</b> is a line segment from the centre to the circle, such as $OP$. $OA$ and $OB$ are radii too. All radii of a circle are equal.' },
+      { name: 'Diameter', col: 3, draw: c => band(A, B, c),
+        text: 'A <b>diameter</b> joins two points on the circle and passes <b>through the centre</b>, such as $AB$. diameter $= 2 \\times$ radius.' },
+      { name: 'Circumference', col: 1, draw: c => mk('circle', { cx: O[0], cy: O[1], r, class: 'hl', fill: 'none', stroke: c, 'stroke-width': 10 }, hl),
+        text: 'The <b>circumference</b> is the curve that forms the circle itself. The word also means its length: the distance once round the circle.' },
+    ];
+    const row = U.el('div', { class: 'cons-list', role: 'group', 'aria-label': 'Parts of a circle' });
+    const status = U.el('div', { class: 'status term-text', 'aria-live': 'polite' });
+    let cur = -1;
+    const btns = TERMS.map((t, i) => {
+      const b = U.el('button', { type: 'button', text: t.name, 'aria-pressed': 'false' });
+      b.addEventListener('click', () => show(cur === i ? -1 : i));
+      row.append(b);
+      return b;
+    });
+    function show(i) {
+      cur = i;
+      U.clear(hl);
+      btns.forEach((b, k) => { b.classList.toggle('on', k === i); b.setAttribute('aria-pressed', k === i ? 'true' : 'false'); });
+      if (i < 0) { status.innerHTML = ''; return; }
+      TERMS[i].draw(G.COL(TERMS[i].col));
+      status.innerHTML = TEX.render(TERMS[i].text);
+    }
+    box.append(row, U.el('div', { class: 'fig-wrap' }, svg), status);
+    show(1);
+    return box;
+  }
+
+  return { angleSvg, angleInto, angleRow, arcPath, polar, dial, angleSum, slicer, grids, circleTerms, typeOf, TYPES, svgPoint };
 })();

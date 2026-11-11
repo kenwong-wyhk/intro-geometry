@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5.4 Three-Dimensional Figures Live</title>
+<meta name="description" content="Live version of F1 Ch5 section 5.4, for teaching from the front of the room.">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!-- everything is served from this site: no third-party requests -->
+<link rel="stylesheet" href="css/fonts.css?v=18d89dea">
+<link rel="stylesheet" href="vendor/katex/katex.min.css?v=3f94e1b7">
+<link rel="stylesheet" href="live/live.css?v=7f277b95">
+<link rel="stylesheet" href="live/lesson.css?v=0de77e0b">
+<style>
+/* Styles for this lesson only. Shared lesson styles: live/lesson.css; the engine's: live/live.css. */
+.cutSvg { max-height: 52vh; display: block; width: 100%; }
+.cutSvg text { font-family: var(--font-display); font-size: 30px; fill: var(--blue); text-anchor: middle; }
+#sketchSvg { max-height: 60vh; display: block; width: 100%; }
+#gridBox .fig { max-height: 46vh; }
+.vef { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: center; }
+.vef div { border-top: 0.14rem solid var(--blue); padding-top: .7rem; }
+.vef b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 3.6rem; color: var(--blue); line-height: 1.1; }
+.vef span { font-size: 1.5rem; }
+.figbox.tall .fig { max-height: 34vh; }
+</style>
+</head>
+<!-- data-reading links back to the reading version (the 5.4 page of the self-study site). -->
+<body data-reading="index.html#/s/5.4">
+
+<!-- 1 Title -->
+<section class="scene blue title">
+  <span class="cross-v"></span><span class="cross-h"></span>
+  <div class="body">
+    <p class="kicker in" style="--i:5">F1 MATHEMATICS · CH5 INTRODUCTION TO GEOMETRY · SECTION 5.4</p>
+    <h1 class="display huge in" style="--i:7">Three-Dimensional Figures</h1>
+    <p class="in" style="--i:9">Solids, their faces, and what we see when we cut them.</p>
+    <p class="kicker in" style="--i:14">Scroll down to begin</p>
+  </div>
+  <div class="foot bare"><h2></h2></div>
+</section>
+
+<!-- 2 Sort the solids (the rule is on the next scene) -->
+<section class="scene">
+  <div class="body">
+    <div class="figbox tall in" style="--i:1" id="sixFig"></div>
+    <div class="row in" style="--i:2"><div><div class="who">Pairs</div><button class="timer" data-sec="90"></button></div><p class="q">Sort these six solids into two groups. What is your rule?</p></div>
+    <p class="note" data-step="1">The next screen shows one way to sort them. Is your rule written down?</p>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.4 | Two groups</h2></div>
+</section>
+
+<!-- 3 Polyhedra and the rest -->
+<section class="scene">
+  <div class="body">
+    <div class="lines2">
+      <div class="in" style="--i:1"><div class="figbox small" id="polyFig"></div><p class="cap" data-step="1">Polyhedra</p><p class="sub" data-step="1">Every face is a polygon.</p></div>
+      <div class="in" style="--i:2"><div class="figbox small" id="curvFig"></div><p class="cap" data-step="2">Not polyhedra</p><p class="sub" data-step="2">Each has a curved surface.</p></div>
+    </div>
+    <p class="display big blue-text" data-step="3">A polyhedron is a solid enclosed by polygons only.</p>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.4 | Polyhedra</h2></div>
+</section>
+
+<!-- 4 Vertices, edges, faces -->
+<section class="scene">
+  <div class="body">
+    <div class="pair">
+      <div class="figbox in" style="--i:1" id="cuboidFig"></div>
+      <div class="stack">
+        <p class="q in" style="--i:2">A <strong>face</strong> is a flat polygon. An <strong>edge</strong> is where two faces meet. A <strong>vertex</strong> is where edges meet.</p>
+        <p class="display blue-text" style="font-size:2.4rem;margin:0" data-step="1">Count them on this cuboid.</p>
+        <p class="note" data-step="2">Dotted lines are edges hidden at the back. The next screen shows the counts.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.4 | Vertices, edges, faces</h2></div>
+</section>
+
+<!-- 5 Reveal: the cuboid -->
+<section class="scene blue">
+  <div class="body">
+    <div class="answers">
+      <span class="in" style="--i:1"><b data-count="8" data-dp="0">8</b> vertices</span>
+      <span class="in" style="--i:2"><b data-count="12" data-dp="0">12</b> edges</span>
+      <span class="in" style="--i:3"><b data-count="6" data-dp="0">6</b> faces</span>
+    </div>
+    <div class="rule" data-step="1"><p>Count in groups: top, bottom, then what joins them. Edges: $4 + 4 + 4$.</p></div>
+  </div>
+  <div class="foot"><h2>5.4 | Vertices, edges, faces</h2></div>
+</section>
+
+<!-- 6 Prisms and pyramids -->
+<section class="scene">
+  <div class="body">
+    <div class="figbox tall in" style="--i:1" id="ppFig"></div>
+    <p class="q" data-step="1">A <strong>prism</strong> has two identical, parallel bases.</p>
+    <p class="q" data-step="2">A <strong>pyramid</strong> has one base, and triangles that meet at one vertex.</p>
+    <p class="note" data-step="3">Both are named after the shape of the base.</p>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.4 | Prisms and pyramids</h2></div>
+</section>
+
+<!-- 7 Work: count -->
+<section class="scene">
+  <div class="body">
+    <div class="pair wide-fig">
+      <div class="figbox in" style="--i:1" id="countFigQ"></div>
+      <div class="rows compact">
+        <div class="row in" style="--i:2"><div><div class="who">Alone</div><button class="timer" data-sec="180"></button></div><p class="q">Name each solid. Then count its vertices, edges and faces.</p></div>
+        <div class="row" data-step="1"><div><div class="who">Pairs</div><button class="timer" data-sec="60"></button></div><p class="q">Compare. If you differ, count the dotted edges again.</p></div>
+        <p class="note" data-step="2">The next screen shows the counts. Are all six numbers written down?</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.4 | Count</h2></div>
+</section>
+
+<!-- 8 Reveal -->
+<section class="scene blue">
+  <div class="body">
+    <p class="kicker in" style="--i:1">(a) PENTAGONAL PRISM</p>
+    <div class="answers"><span class="in" style="--i:2">10 vertices</span><span class="in" style="--i:3">15 edges</span><span class="in" style="--i:4">7 faces</span></div>
+    <p class="kicker" data-step="1">(b) HEXAGONAL PYRAMID</p>
+    <div class="answers" data-step="1"><span>7 vertices</span><span>12 edges</span><span>7 faces</span></div>
+  </div>
+  <div class="foot"><h2>5.4 | Count: answers</h2></div>
+</section>
+
+<!-- 9 Cross-sections: prediction for a prism -->
+<section class="scene">
+  <div class="body">
+    <div class="pair">
+      <div class="figbox in" style="--i:1" id="prismFigQ"></div>
+      <div class="stack">
+        <p class="q in" style="--i:2">When a solid is cut, the flat face on the cut is a <strong>cross-section</strong>.</p>
+        <p class="display blue-text" style="font-size:2.3rem;margin:0" data-step="1">Cut this prism parallel to its triangular ends, at different places. What happens to the cross-section?</p>
+        <div class="btns choice" data-step="1"><button class="btn">Same shape, same size</button><button class="btn">Same shape, different sizes</button><button class="btn">Different shapes</button></div>
+        <p class="note" data-step="2">The next screen cuts it. Has everyone chosen?</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.4 | Cutting a prism</h2></div>
+</section>
+
+<!-- 10 The cut moves through the prism (animation) -->
+<section class="scene" data-enter="cutPrism">
+  <div class="body">
+    <div class="in" style="--i:1"><svg class="cutSvg" id="cutPrismSvg" viewBox="0 0 1000 480" role="img" aria-label="A cut moves along a triangular prism; the cross-section stays the same triangle"></svg></div>
+    <div class="btns in" style="--i:2"><button class="btn" onclick="Live.replay('cutPrism')">Cut again</button></div>
+    <p class="display big blue-text" data-step="1">Uniform cross-sections</p>
+    <p data-step="1">Every cut parallel to the end faces has the same shape <strong>and</strong> the same size as the end faces.</p>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.4 | Cutting a prism</h2></div>
+</section>
+
+<!-- 11 Prediction for a pyramid -->
+<section class="scene">
+  <div class="body">
+    <div class="pair">
+      <div class="figbox in" style="--i:1" id="pyrFigQ"></div>
+      <div class="stack">
+        <p class="display blue-text in" style="--i:2;font-size:2.3rem;margin:0">Now cut a square pyramid parallel to its base, at different heights.</p>
+        <div class="btns choice in" style="--i:3"><button class="btn">Same shape, same size</button><button class="btn">Same shape, different sizes</button><button class="btn">Different shapes</button></div>
+        <p class="note" data-step="1">The next screen cuts it. Has everyone chosen?</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.4 | Cutting a pyramid</h2></div>
+</section>
+
+<!-- 12 The cut moves up the pyramid (animation) -->
+<section class="scene" data-enter="cutPyr">
+  <div class="body">
+    <div class="in" style="--i:1"><svg class="cutSvg" id="cutPyrSvg" viewBox="0 0 1000 480" role="img" aria-label="A cut moves up a square pyramid; the cross-section is a square that gets smaller"></svg></div>
+    <div class="btns in" style="--i:2"><button class="btn" onclick="Live.replay('cutPyr')">Cut again</button></div>
+    <p class="display big blue-text" data-step="1">Not uniform</p>
+    <p data-step="1">Always a square, but the squares get smaller. Uniform needs the same shape <strong>and</strong> the same size.</p>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.4 | Cutting a pyramid</h2></div>
+</section>
+
+<!-- 13 Work: four solids -->
+<section class="scene">
+  <div class="body">
+    <div class="figbox tall in" style="--i:1" id="fourFig"></div>
+    <div class="row in" style="--i:2"><div><div class="who">Pairs</div><button class="timer" data-sec="150"></button></div>
+      <div><p class="q">(a) Which are polyhedra?</p><p class="q">(b) Which have uniform cross-sections?</p></div></div>
+    <p class="note" data-step="1">The next screen shows the answers. Are both parts answered?</p>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.4 | Four solids</h2></div>
+</section>
+
+<!-- 14 Reveal -->
+<section class="scene blue">
+  <div class="body">
+    <div class="answers two-col">
+      <span class="in" style="--i:1">(a) polyhedra: I and II</span><span class="in" style="--i:2">(b) uniform: I and III</span>
+    </div>
+    <div class="rule" data-step="1"><p>Solid III, a circular cylinder, is not a polyhedron, yet every cut parallel to its circular ends is the same circle.</p></div>
+  </div>
+  <div class="foot"><h2>5.4 | Four solids: answers</h2></div>
+</section>
+
+<!-- 15 Work: name the cross-sections -->
+<section class="scene">
+  <div class="body">
+    <div class="figbox tall in" style="--i:1" id="cutsFig"></div>
+    <div class="row in" style="--i:2"><div><div class="who">Alone</div><button class="timer" data-sec="120"></button></div><p class="q">Each solid is cut along the red dotted line. Sketch the four cross-sections and name their shapes.</p></div>
+    <p class="note" data-step="1">The next screen shows the shapes. Are four sketches drawn?</p>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.4 | Name the cross-section</h2></div>
+</section>
+
+<!-- 16 Reveal -->
+<section class="scene blue">
+  <div class="body">
+    <div class="answers two-col">
+      <span class="in" style="--i:1">(a) a circle</span><span class="in" style="--i:2">(b) a rectangle</span>
+      <span class="in" style="--i:3">(c) a circle</span><span class="in" style="--i:4">(d) a triangle</span>
+    </div>
+    <div class="rule" data-step="1">
+      <p class="display big">Draw the flat shape, not the solid.</p>
+      <p>The oval in the picture is a circle seen from an angle. Imagine looking straight at the cut.</p>
+    </div>
+  </div>
+  <div class="foot"><h2>5.4 | Name the cross-section: answers</h2></div>
+</section>
+
+<!-- 17 Sketching a solid: builds one step per press -->
+<section class="scene">
+  <div class="body">
+    <div class="pair">
+      <div class="in" style="--i:1"><svg id="sketchSvg" viewBox="0 0 600 440" role="img" aria-label="A cuboid is sketched in four steps: the front face, a copy behind it, the joining edges, and dotted hidden edges"></svg></div>
+      <div class="stack">
+        <p class="q in" style="--i:2">A <strong>2-D representation</strong> is a plane figure that represents a solid.</p>
+        <p class="q lit" data-step="1" id="sk1">1. Draw the front face.</p>
+        <p class="q lit" data-step="2" id="sk2">2. Draw a copy of it, up and to the right.</p>
+        <p class="q lit" data-step="3" id="sk3">3. Join each vertex to its copy.</p>
+        <p class="q lit" data-step="4" id="sk4">4. Change the hidden edges to dotted lines.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.4 | Sketching a solid</h2></div>
+</section>
+
+<!-- 18 Grid paper -->
+<section class="scene">
+  <div class="body">
+    <div class="in" style="--i:1" id="gridBox"></div>
+    <p data-step="1"><strong>Oblique grid:</strong> the front face keeps its true shape, and the depth goes along the slanted lines.</p>
+    <p class="display blue-text" style="font-size:2.3rem;margin:0" data-step="2">One slanted grid line stands for 2 units.</p>
+    <p data-step="3"><strong>Isometric grid:</strong> no face keeps its true shape, but all three directions follow the grid, one grid line for each unit.</p>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.4 | Grid paper</h2></div>
+</section>
+
+<!-- 19 Work on paper -->
+<section class="scene">
+  <div class="body rows">
+    <div class="row in" style="--i:1"><div><div class="who">On paper</div><button class="timer" data-sec="180"></button></div><p class="q">Sketch a triangular pyramid standing on its base. Use dotted lines for the hidden edges.</p></div>
+    <div class="row" data-step="1"><div><div class="who">Check</div></div><p class="q">Count the edges in your sketch. A triangular pyramid has $3 + 3 = 6$.</p></div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.4 | Your turn</h2></div>
+</section>
+
+<!-- 20 Today -->
+<section class="scene">
+  <div class="body">
+    <div class="rules">
+      <div class="r1 in" style="--i:1"><span class="n">1</span><div><p>A polyhedron has polygons only.</p><p class="sub">One curved surface, and the solid is not a polyhedron. Count the dotted edges too.</p></div></div>
+      <div class="r1" data-step="1"><span class="n">2</span><div><p>Uniform means the same shape and the same size.</p><p class="sub">Prisms and circular cylinders: yes. Pyramids, circular cones and spheres: no.</p></div></div>
+      <div class="r1" data-step="2"><span class="n">3</span><div><p>A cross-section is a flat shape.</p><p class="sub">Look straight at the cut. In a sketch, hidden edges are dotted.</p></div></div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.4 | Today</h2></div>
+</section>
+
+<!-- 21 After class -->
+<section class="scene blue">
+  <div class="body">
+    <p class="display huge in" style="--i:1">After class</p>
+    <p class="in" style="--i:2">On the self-study site, section 5.4: try the <strong>slicer</strong> on a cone and a sphere, then <strong>Practice</strong> (11 questions) and <strong>Traps</strong>.</p>
+    <p class="in" style="--i:3">Then the <strong>Sorting Game</strong> (the two solids decks) and the <strong>Mixed Challenge</strong> for the whole chapter.</p>
+    <p class="kicker in" style="--i:5">END OF CHAPTER 5</p>
+  </div>
+  <div class="foot"><h2>5.4 | Practise</h2></div>
+</section>
+
+<script src="vendor/katex/katex.min.js?v=4881bfc9"></script>
+<script src="js/core.js?v=b91bfc72"></script>
+<script src="js/geom.js?v=c6a92979"></script>
+<script src="js/check.js?v=c7d26bad"></script>
+<script src="js/question.js?v=2445e9af"></script>
+<script src="js/solids.js?v=c5787f97"></script>
+<script src="js/demos.js?v=7add0618"></script>
+<script src="data/helpers.js?v=02530cf8"></script>
+<script src="data/s54.js?v=c55c6a19"></script>
+<script src="live/live.js?v=f7602a1f"></script>
+<script src="live/lesson.js?v=de8784ec"></script>
+<script>
+'use strict';
+/* ---------- 1. Maths and helpers: live/lesson.js ---------- */
+const { $, C, figInto, litParts } = L5;
+const SEC = C5.sections['5.4'];
+const practice = id => SEC.practice.find(q => q.id === id);
+const cap = (s, c) => Object.assign({}, s, { cap: c });
+
+/* ---------- 2. Solids (drawn by js/solids.js, as in the reading version) ---------- */
+const S = {
+  cube: { kind: 'uprism', ngon: 4, r: 2.2, height: 3.1 },
+  cuboid: { kind: 'uprism', base: [[-3, -1.2], [3, -1.2], [3, 1.2], [-3, 1.2]], height: 2.4 },
+  sqPyr: { kind: 'pyramid', ngon: 4, r: 2.6, height: 4.4 },
+  cyl: { kind: 'cylinder', r: 1.8, h: 4.2 },
+  cone: { kind: 'cone', r: 2, h: 4.4 },
+  sphere: { kind: 'sphere', r: 2.2 },
+  triPrism: { kind: 'prism', base: [[0, 0], [4, 0], [1.2, 3]], depth: 7 },
+  triPrismUp: { kind: 'uprism', ngon: 3, r: 2.2, height: 4 },
+  pentPrism: { kind: 'uprism', ngon: 5, r: 2, height: 4 },
+  triPyr: { kind: 'pyramid', ngon: 3, r: 2.6, height: 4.2 },
+  hexPyr: { kind: 'pyramid', ngon: 6, r: 2.4, height: 4.6 },
+};
+figInto('sixFig', { w: 600, h: 150, solids: [S.cone, S.cube, S.sphere, S.sqPyr, S.cyl, S.cuboid] });
+figInto('polyFig', { w: 340, h: 140, solids: [S.cube, S.cuboid, S.sqPyr] });
+figInto('curvFig', { w: 340, h: 140, solids: [S.cyl, S.cone, S.sphere] });
+figInto('cuboidFig', { w: 300, h: 190, solid: S.cuboid });
+figInto('ppFig', { w: 560, h: 160, solids: [cap(S.triPrismUp, 'triangular prism'), cap(S.pentPrism, 'pentagonal prism'), cap(S.triPyr, 'triangular pyramid'), cap(S.hexPyr, 'hexagonal pyramid')] });
+figInto('countFigQ', SEC.examples[0].fig);
+figInto('prismFigQ', { w: 300, h: 200, solid: S.triPrism });
+figInto('pyrFigQ', { w: 300, h: 210, solid: S.sqPyr });
+figInto('fourFig', Object.assign({}, practice('54-6').fig, { w: 520, h: 150 }));
+figInto('cutsFig', Object.assign({}, practice('54-5').fig, { w: 520, h: 170 }));
+$('gridBox').append(DEMO.grids().querySelector('svg'));
+
+/* ---------- 3. Animation: a cut moves through a solid, and its true cross-section is drawn beside it ---------- */
+function cutScene(svgId, name, solid, axis, from, to, ext) {
+  const svg = $(svgId);
+  const draw = t => {
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    SOL.drawSolid(svg, Object.assign({}, solid, { cut: { [axis]: t }, weight: 2.4 }), [40, 20, 520, 440]);
+    svg.appendChild(Live.svg('line', { x1: 600, y1: 40, x2: 600, y2: 440, stroke: 'var(--blue-tint-2)', 'stroke-width': 2 }));
+    svg.appendChild(Live.svg('text', { x: 800, y: 60 }, 'Cross-section'));
+    const sh = SOL.section(solid, { [axis]: t }), c = [800, 265], k = 300 / ext;
+    const xs = sh.map(p => p[0]), ys = sh.map(p => p[1]), cx = (Math.min(...xs) + Math.max(...xs)) / 2, cy = (Math.min(...ys) + Math.max(...ys)) / 2;
+    svg.appendChild(Live.svg('polygon', { points: sh.map(p => (c[0] + (p[0] - cx) * k).toFixed(1) + ',' + (c[1] - (p[1] - cy) * k).toFixed(1)).join(' '), fill: 'var(--c2)', 'fill-opacity': .1, stroke: 'var(--c2)', 'stroke-width': 4, 'stroke-linejoin': 'round' }));
+  };
+  draw(from);
+  Live.onEnter(name, async alive => {
+    draw(from);
+    await Live.wait(1000, alive); if (!alive()) return;
+    await Live.tween(5200, p => draw(from + (to - from) * Live.ease(p)), alive);
+  });
+}
+cutScene('cutPrismSvg', 'cutPrism', S.triPrism, 'z', 0.5, 6.5, 4.4);
+cutScene('cutPyrSvg', 'cutPyr', S.sqPyr, 'y', 0.3, 2.9, 4.2);
+
+/* ---------- 4. Sketching a cuboid: each line of text adds its part of the drawing ---------- */
+(function () {
+  const svg = $('sketchSvg');
+  const F = [[110, 190], [370, 190], [370, 380], [110, 380]], off = [120, -90], Bk = F.map(p => [p[0] + off[0], p[1] + off[1]]);
+  const hl = Live.svg('g', { opacity: .3 }); svg.appendChild(hl);
+  const seg = (a, b, grp) => { const l = Live.svg('line', { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: 'var(--ink)', 'stroke-width': 4, 'stroke-linecap': 'round' }); grp.appendChild(l); return l; };
+  const groups = [1, 2, 3].map(() => { const g = Live.svg('g', { opacity: 0, style: 'transition:opacity .6s' }); svg.appendChild(g); return g; });
+  F.forEach((p, i) => seg(p, F[(i + 1) % 4], groups[0]));
+  const backLines = Bk.map((p, i) => seg(p, Bk[(i + 1) % 4], groups[1]));
+  const joins = F.map((p, i) => seg(p, Bk[i], groups[2]));
+  // the hidden vertex is the back-bottom-left one (index 3); the three edges that meet there are hidden
+  const hidden = [backLines[2], backLines[3], joins[3]];
+  const steps = ['sk1', 'sk2', 'sk3', 'sk4'].map($);
+  const band = (a, b, c) => Live.svg('line', { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: c, 'stroke-width': 22, 'stroke-linecap': 'round' });
+  const update = () => {
+    const n = steps.filter(s => s.classList.contains('shown')).length;
+    groups.forEach((g, i) => g.setAttribute('opacity', n > i ? 1 : 0));
+    hidden.forEach(l => l.setAttribute('stroke-dasharray', n >= 4 ? '14 12' : ''));
+  };
+  steps.forEach(s => new MutationObserver(update).observe(s, { attributes: true, attributeFilter: ['class'] }));
+  update();
+  litParts(hl, [
+    { el: steps[0], c: 1, draw: c => F.map((p, i) => band(p, F[(i + 1) % 4], c)) },
+    { el: steps[1], c: 2, draw: c => Bk.map((p, i) => band(p, Bk[(i + 1) % 4], c)) },
+    { el: steps[2], c: 3, draw: c => F.map((p, i) => band(p, Bk[i], c)) },
+    { el: steps[3], c: 1, draw: c => [band(Bk[2], Bk[3], c), band(Bk[3], Bk[0], c), band(F[3], Bk[3], c)] },
+  ]);
+})();
+</script>
+</body>
+</html>

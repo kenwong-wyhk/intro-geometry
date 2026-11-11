@@ -412,3 +412,13 @@ input[type=range] { width: 100%; accent-color: var(--blue); min-height: 36px; }
 /* dragging inside a demo must never select its text (the selection colour hides the numbers) */
 .demo svg, .demo svg text, .demo .dial-name, .demo .dial-facts { -webkit-user-select: none; user-select: none; }
 .demo svg text { pointer-events: none; }
+/* five figure cards (types of polygons): one row of 5 when there is room, otherwise a row of 2 then a row of 3 */
+.figcards.five { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+.figcards.five .mini-card { grid-column: span 2; padding: 6px 6px; }
+.figcards.five .mini-card:nth-child(-n+2) { grid-column: span 3; }
+.figcards.five .mini-ttl { font-size: 15px; }
+@media (min-width: 900px) {
+  .figcards.five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .figcards.five .mini-card, .figcards.five .mini-card:nth-child(-n+2) { grid-column: span 1; }
+}
+.demo .term-text { min-height: 3.2em; color: var(--ink); font-weight: 400; }

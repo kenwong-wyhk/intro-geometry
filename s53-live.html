@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5.3 Basic Constructions Live</title>
+<meta name="description" content="Live version of F1 Ch5 section 5.3, for teaching from the front of the room.">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!-- everything is served from this site: no third-party requests -->
+<link rel="stylesheet" href="css/fonts.css?v=18d89dea">
+<link rel="stylesheet" href="vendor/katex/katex.min.css?v=3f94e1b7">
+<link rel="stylesheet" href="live/live.css?v=7f277b95">
+<link rel="stylesheet" href="live/lesson.css?v=0de77e0b">
+<style>
+/* Styles for this lesson only. Shared lesson styles: live/lesson.css; the engine's: live/live.css. */
+.tools4 { display: grid; grid-template-columns: 14rem 1fr; gap: 0 2rem; font-size: 1.8rem; }
+.tools4 > div { display: contents; }
+.tools4 span { border-top: 0.07rem solid var(--frame); padding: .9rem 0; }
+.tools4 .t { font-family: var(--font-display); color: var(--blue); font-size: 2.2rem; }
+.checks { display: flex; flex-direction: column; gap: 1rem; font-size: 1.9rem; }
+.checks p { margin: 0; border-top: 0.07rem solid var(--frame); padding-top: .9rem; }
+</style>
+</head>
+<!-- data-reading links back to the reading version (the 5.3 page of the self-study site). -->
+<body data-reading="index.html#/s/5.3">
+
+<!-- 1 Title -->
+<section class="scene blue title">
+  <span class="cross-v"></span><span class="cross-h"></span>
+  <div class="body">
+    <p class="kicker in" style="--i:5">F1 MATHEMATICS · CH5 INTRODUCTION TO GEOMETRY · SECTION 5.3</p>
+    <h1 class="display huge in" style="--i:7">Basic Constructions</h1>
+    <p class="in" style="--i:9">Have ready: a sharp pencil, ruler, set square, compasses and protractor.</p>
+    <p class="kicker in" style="--i:14">Scroll down to begin</p>
+  </div>
+  <div class="foot bare"><h2></h2></div>
+</section>
+
+<!-- 2 The four tools -->
+<section class="scene">
+  <div class="body">
+    <p class="in" style="--i:1">Hold up each tool as it appears.</p>
+    <div class="tools4">
+      <div><span class="t" data-step="1">Ruler</span><span data-step="1">straight lines; measuring lengths</span></div>
+      <div><span class="t" data-step="2">Set square</span><span data-step="2">parallel lines and perpendicular lines, with a ruler</span></div>
+      <div><span class="t" data-step="3">Compasses</span><span data-step="3">circles and arcs; copying a length</span></div>
+      <div><span class="t" data-step="4">Protractor</span><span data-step="4">measuring and drawing angles</span></div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.3 | Four tools</h2></div>
+</section>
+
+<!-- 3 Parallel line -->
+<section class="scene">
+  <div class="body">
+    <div class="pair wide-fig">
+      <div class="figbox cons-fig in" style="--i:1" id="c1Fig"></div>
+      <div class="stack"><p class="cons-tools in" style="--i:2">RULER + SET SQUARE</p><div class="in" style="--i:3" id="c1Text"></div></div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.3 | A parallel line</h2></div>
+</section>
+
+<!-- 4 Perpendicular line -->
+<section class="scene">
+  <div class="body">
+    <div class="pair wide-fig">
+      <div class="figbox cons-fig in" style="--i:1" id="c2Fig"></div>
+      <div class="stack"><p class="cons-tools in" style="--i:2">RULER + SET SQUARE</p><div class="in" style="--i:3" id="c2Text"></div></div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.3 | A perpendicular line</h2></div>
+</section>
+
+<!-- 5 Work on paper -->
+<section class="scene">
+  <div class="body rows">
+    <div class="row in" style="--i:1"><div><div class="who">On paper</div><button class="timer" data-sec="300"></button></div>
+      <div><p class="q">Draw a line $CD$ and mark a point $E$ not on it.</p><p class="q">Through $E$, construct (a) the line parallel to $CD$, (b) the line perpendicular to $CD$.</p></div></div>
+    <div class="row" data-step="1"><div><div class="who">Check</div></div><p class="q">Swap with your neighbour. Are the parallel lines marked with arrows, and the right angle with a small square?</p></div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.3 | Your turn</h2></div>
+</section>
+
+<!-- 6 Circle -->
+<section class="scene">
+  <div class="body">
+    <div class="pair wide-fig">
+      <div class="figbox cons-fig in" style="--i:1" id="c3Fig"></div>
+      <div class="stack"><p class="cons-tools in" style="--i:2">RULER + COMPASSES</p><div class="in" style="--i:3" id="c3Text"></div></div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.3 | A circle</h2></div>
+</section>
+
+<!-- 7 Opening of the compasses: a quick choice (answer on the next scene) -->
+<section class="scene">
+  <div class="body">
+    <p class="display big blue-text narrow in" style="--i:1">To draw a circle of diameter 7 cm, how wide do we open the compasses?</p>
+    <div class="btns choice in" style="--i:2"><button class="btn">3.5 cm</button><button class="btn">7 cm</button><button class="btn">14 cm</button></div>
+    <p class="note" data-step="1">The next screen shows the answer. Has everyone chosen?</p>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.3 | How wide?</h2></div>
+</section>
+
+<!-- 8 Reveal -->
+<section class="scene blue">
+  <div class="body">
+    <p class="kicker in" style="--i:1">THE OPENING IS THE RADIUS</p>
+    <p class="display huge in" style="--i:2"><b data-count="3.5" data-from="7" data-dp="1">3.5</b> cm</p>
+    <div class="rule" data-step="1"><p>The needle is at the centre and the pencil is on the circle: radius $= 7 \div 2 = 3.5$ cm.</p></div>
+  </div>
+  <div class="foot"><h2>5.3 | How wide?</h2></div>
+</section>
+
+<!-- 9 Copy a line segment -->
+<section class="scene">
+  <div class="body">
+    <div class="pair wide-fig">
+      <div class="figbox cons-fig in" style="--i:1" id="c4Fig"></div>
+      <div class="stack"><p class="cons-tools in" style="--i:2">COMPASSES</p><div class="in" style="--i:3" id="c4Text"></div></div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.3 | Copy a length</h2></div>
+</section>
+
+<!-- 10 Five cases for triangles -->
+<section class="scene">
+  <div class="body">
+    <p class="display big blue-text in" style="--i:1">Constructing a triangle: what is given?</p>
+    <div class="cases">
+      <div class="head"><span>CASE</span><span>GIVEN</span><span>TOOLS</span></div>
+      <div><span class="n">1</span><span>three sides</span><span>ruler, compasses</span></div>
+      <div><span class="n">2</span><span>two sides and their <strong>included</strong> angle</span><span>ruler, protractor</span></div>
+      <div><span class="n">3</span><span>two angles and their <strong>included</strong> side</span><span>ruler, protractor</span></div>
+      <div><span class="n">4</span><span>two angles and a side <strong>not</strong> between them</span><span>find the third angle, then Case 3</span></div>
+      <div><span class="n">5</span><span>a right angle, the hypotenuse, one side</span><span>ruler, set square, compasses</span></div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.3 | Five cases</h2></div>
+</section>
+
+<!-- 11 Case 1 -->
+<section class="scene">
+  <div class="body">
+    <div class="pair wide-fig">
+      <div class="figbox cons-fig in" style="--i:1" id="c5Fig"></div>
+      <div class="stack"><p class="cons-tools in" style="--i:2">CASE 1 · RULER + COMPASSES</p><div class="in" style="--i:3" id="c5Text"></div></div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.3 | Case 1: three sides</h2></div>
+</section>
+
+<!-- 12 Case 2 -->
+<section class="scene">
+  <div class="body">
+    <div class="pair wide-fig">
+      <div class="figbox cons-fig in" style="--i:1" id="c6Fig"></div>
+      <div class="stack"><p class="cons-tools in" style="--i:2">CASE 2 · RULER + PROTRACTOR</p><div class="in" style="--i:3" id="c6Text"></div></div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.3 | Case 2: side, angle, side</h2></div>
+</section>
+
+<!-- 13 Case 3 -->
+<section class="scene">
+  <div class="body">
+    <div class="pair wide-fig">
+      <div class="figbox cons-fig in" style="--i:1" id="c7Fig"></div>
+      <div class="stack"><p class="cons-tools in" style="--i:2">CASE 3 · RULER + PROTRACTOR</p><div class="in" style="--i:3" id="c7Text"></div></div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.3 | Case 3: angle, side, angle</h2></div>
+</section>
+
+<!-- 14 Case 4: what first? (prediction) -->
+<section class="scene">
+  <div class="body">
+    <p class="q in" style="--i:1">Construct $\triangle PQR$ with $QR = 6$ cm, $\angle QPR = 65^\circ$ and $\angle PRQ = 75^\circ$.</p>
+    <p class="display big blue-text in" style="--i:2">What must we do first?</p>
+    <div class="btns choice in" style="--i:3"><button class="btn">Draw $QR$, then $65^\circ$ at $Q$</button><button class="btn">Draw $QR$, then $65^\circ$ at $P$</button><button class="btn">Find the third angle</button></div>
+    <p class="note" data-step="1">The next screen constructs it. Has everyone chosen?</p>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.3 | Case 4: what first?</h2></div>
+</section>
+
+<!-- 15 Case 4 -->
+<section class="scene">
+  <div class="body">
+    <div class="pair wide-fig">
+      <div class="figbox cons-fig in" style="--i:1" id="c8Fig"></div>
+      <div class="stack"><p class="cons-tools in" style="--i:2">CASE 4 · RULER + PROTRACTOR</p><div class="in" style="--i:3" id="c8Text"></div></div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.3 | Case 4: find the third angle</h2></div>
+</section>
+
+<!-- 16 Case 5 -->
+<section class="scene">
+  <div class="body">
+    <div class="pair wide-fig">
+      <div class="figbox cons-fig in" style="--i:1" id="c9Fig"></div>
+      <div class="stack"><p class="cons-tools in" style="--i:2">CASE 5 · RULER + SET SQUARE + COMPASSES</p><div class="in" style="--i:3" id="c9Text"></div></div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.3 | Case 5: right angle, hypotenuse, side</h2></div>
+</section>
+
+<!-- 17 Work on paper, with a measurable answer -->
+<section class="scene">
+  <div class="body rows">
+    <div class="row in" style="--i:1"><div><div class="who">On paper</div><button class="timer" data-sec="360"></button></div>
+      <div><p class="q">Construct $\triangle ABC$ with $AB = 8$ cm, $BC = 6.4$ cm and $CA = 4.8$ cm. Keep your arcs.</p><p class="q">Then measure $\angle ACB$ with a protractor.</p></div></div>
+    <div class="row" data-step="1"><div><div class="who">Commit</div></div>
+      <div><p class="q">By its angles, $\triangle ABC$ is</p><div class="btns choice" style="margin-top:.6rem"><button class="btn">acute-angled</button><button class="btn">right-angled</button><button class="btn">obtuse-angled</button></div></div></div>
+    <p class="note" data-step="2">The next screen shows the answer. Has everyone measured the angle?</p>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.3 | Your turn</h2></div>
+</section>
+
+<!-- 18 Reveal -->
+<section class="scene blue">
+  <div class="body">
+    <p class="kicker in" style="--i:1">CASE 1 · $\angle ACB$ MEASURES</p>
+    <p class="display huge in" style="--i:2"><b data-count="90" data-from="60" data-dp="0">90</b>°</p>
+    <div class="rule" data-step="1">
+      <p class="display big">A right-angled triangle.</p>
+      <p>If your angle is far from $90^\circ$, check the opening of your compasses on the ruler and draw again.</p>
+    </div>
+  </div>
+  <div class="foot"><h2>5.3 | Your turn: answer</h2></div>
+</section>
+
+<!-- 19 Check your drawing -->
+<section class="scene">
+  <div class="body">
+    <p class="display big blue-text in" style="--i:1">Before you hand it in</p>
+    <div class="checks">
+      <p data-step="1">Lengths within 1 mm, angles within 1°.</p>
+      <p data-step="2">Every vertex labelled with the right letter.</p>
+      <p data-step="3">The given lengths and angles written on the figure.</p>
+      <p data-step="4">Arcs and long lines <strong>still there</strong>. Never rub them out.</p>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.3 | Check your drawing</h2></div>
+</section>
+
+<!-- 20 Today -->
+<section class="scene">
+  <div class="body">
+    <div class="rules">
+      <div class="r1 in" style="--i:1"><span class="n">1</span><div><p>Sketch first, then choose the case.</p><p class="sub">Write the given measurements on a rough sketch. Is the angle between the two sides? Is the side between the two angles?</p></div></div>
+      <div class="r1" data-step="1"><span class="n">2</span><div><p>The opening of the compasses is the radius.</p><p class="sub">Set it on the ruler, and do not squeeze the compasses while drawing.</p></div></div>
+      <div class="r1" data-step="2"><span class="n">3</span><div><p>Keep the construction lines.</p><p class="sub">They show how the figure was made.</p></div></div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.3 | Today</h2></div>
+</section>
+
+<!-- 21 After class -->
+<section class="scene blue">
+  <div class="body">
+    <p class="display huge in" style="--i:1">After class</p>
+    <p class="in" style="--i:2">On the self-study site, section 5.3: watch any construction again, one step at a time.</p>
+    <p class="in" style="--i:3">Then <strong>Practice</strong> (10 questions, three of them done on paper) and <strong>Traps</strong>.</p>
+    <p class="kicker in" style="--i:5">NEXT: 5.4 THREE-DIMENSIONAL FIGURES</p>
+  </div>
+  <div class="foot"><h2>5.3 | Practise</h2></div>
+</section>
+
+<script src="vendor/katex/katex.min.js?v=4881bfc9"></script>
+<script src="js/core.js?v=b91bfc72"></script>
+<script src="js/geom.js?v=c6a92979"></script>
+<script src="js/check.js?v=c7d26bad"></script>
+<script src="js/question.js?v=2445e9af"></script>
+<script src="js/construct.js?v=dc8a7d55"></script>
+<script src="live/live.js?v=f7602a1f"></script>
+<script src="live/lesson.js?v=de8784ec"></script>
+<script>
+'use strict';
+/* Each construction comes from js/construct.js, the same drawings as the reading version.
+   L5.cons shows one step per press: the drawing on the left, the words for that step on the right. */
+['parallel', 'perp', 'circle', 'copy', 'sss', 'sas', 'asa', 'aas', 'rhs'].forEach((id, i) => L5.cons('c' + (i + 1) + 'Fig', 'c' + (i + 1) + 'Text', id));
+</script>
+</body>
+</html>

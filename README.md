@@ -14,10 +14,10 @@ student's device (progress ticks are kept in that browser only). Built from the 
 | 5.3 | Nine constructions shown step by step (ruler, set square, compasses, protractor); practice on tools, cases and step order; "Do it on paper" questions with a measurable answer |
 | 5.4 demo | Slicer: move a cut through a solid and see its true cross-section; solids are drawn by `js/solids.js` with dotted hidden edges |
 | Game | Sorting Game: six decks (angles, triangles by sides and by angles, polygons, polyhedron?, uniform cross-sections?), rounds of 10 and a 60-second Speed Round |
-| Traps | Trap Gallery — 24 common mistakes with "the trap" vs "do this" |
+| Traps | Trap Gallery — 25 common mistakes with "the trap" vs "do this" |
 | Challenge | 10 random questions from a pool of 30; Practice mode or 35-minute Test mode |
 | Revision sheet | Key points of the chapter on one printable page (`#/sheet`) |
-| Live lessons | `s51-live.html`: section 5.1 as full-screen scenes for teaching from the front (scroll, arrow keys or a clicker; F for full screen). Engine in `live/`. 5.2–5.4 follow after the 5.1 review. |
+| Live lessons | `s51-live.html` to `s54-live.html`: each section as full-screen scenes for teaching from the front (scroll, arrow keys or a clicker; F for full screen). Engine in `live/live.js` and `live/live.css`; shared helpers in `live/lesson.js` and `live/lesson.css` (`L5.cons` plays a construction one step per press, `L5.litParts` lights parts of a hand-made drawing). Linked from each section page (`live:` in the section's data file). |
 
 ## Files
 

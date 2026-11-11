@@ -58,11 +58,12 @@
     }
     if (b.reasons) return reasonTable(b.reasons);
     if (b.fig) return figBlock(b.fig, b.cap);
-    if (b.figs) return U.el('div', { class: 'cards figcards' }, b.figs.map(f => U.el('div', { class: 'mini-card' }, figBlock(f.fig, null), f.cap ? U.el('div', { class: 'mini-ttl', html: TEX.render(f.cap) }) : '', f.note ? U.el('div', { class: 'small muted', html: TEX.render(f.note) }) : '')));
+    if (b.figs) return U.el('div', { class: 'cards figcards' + (b.figs.length === 5 ? ' five' : '') }, b.figs.map(f => U.el('div', { class: 'mini-card' }, figBlock(f.fig, null), f.cap ? U.el('div', { class: 'mini-ttl', html: TEX.render(f.cap) }) : '', f.note ? U.el('div', { class: 'small muted', html: TEX.render(f.note) }) : '')));
     if (b.demo === 'dial') return DEMO.dial();
     if (b.demo === 'anglesum') return DEMO.angleSum();
     if (b.demo === 'slicer') return DEMO.slicer();
     if (b.demo === 'grids') return DEMO.grids();
+    if (b.demo === 'circle') return DEMO.circleTerms();
     if (b.demo === 'constructions') return CONS.render(b.only);
     if (b.anglerow) return DEMO.angleRow(b.anglerow);
     if (b.checklist) return U.el('div', { class: 'tip' }, U.el('div', { class: 'tip-title', text: b.title || 'Check your drawing' }), U.el('ul', { class: 'ticklist' }, b.checklist.map(x => U.el('li', { html: TEX.render(x) }))));

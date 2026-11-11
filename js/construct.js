@@ -255,6 +255,9 @@ const CONS = (() => {
     });
     if (SHOWN.length < 2) list.classList.add('hidden');
     select(SHOWN[0]);
+    box.go = k => { stop(); go(k); };          // show step k (0 = the given figure)
+    box.count = () => steps.length;
+    box.stepText = stepText;
     return box;
   }
   return { render, LIST };

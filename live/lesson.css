@@ -98,3 +98,32 @@ table.proof tr.now[data-c="3"] td { background: var(--band-3); }
 /* letters inside figure values (2x, x + 28°) and circles drawn by the figure engine */
 .fig tspan.var { font-family: "Times New Roman", Times, serif; font-style: italic; font-size: 14px; }
 .foot .where { text-transform: none; }
+
+/* ---------- F1 Ch5: solids, grids and constructions drawn by the site's own modules ---------- */
+.fig .sol-cap { font-family: var(--font-sans); font-weight: 400; font-size: 12px; fill: var(--blue); text-anchor: middle; }
+.fig .grid { stroke: var(--blue-tint-2); stroke-width: 1; }
+.fig .c-arc { stroke: var(--gold); stroke-width: 1.4; fill: none; }
+.fig .c-line { stroke: var(--ink); stroke-width: 1.6; fill: none; }
+.fig .c-result { stroke: var(--blue); stroke-width: 2.4; fill: none; }
+.fig .c-pt { fill: var(--ink); }
+.fig .c-pt.new { fill: var(--red); }
+.fig .c-tool { fill: var(--blue); fill-opacity: .1; stroke: var(--blue); stroke-width: 1.2; stroke-linejoin: round; }
+.fig .c-tool.ruler { fill: var(--gold); fill-opacity: .16; stroke: var(--gold); }
+.fig .c-tool.ghost { fill: none; stroke: var(--rule-grey); stroke-dasharray: 5 4; }
+.fig .c-tick { stroke: var(--blue); stroke-width: 1; }
+.fig .c-ptxt { font-family: var(--font-sans); font-size: 9px; fill: var(--blue); text-anchor: middle; }
+/* a construction shown one step per press */
+.cons-fig .fig { max-height: 62vh; }
+.cons-step { font-size: 1.9rem; line-height: 1.4; min-height: 6.5em; margin: 0; }
+.cons-step .stepno { display: block; font-family: var(--font-display); color: var(--blue); font-size: 1.5rem; margin-bottom: .3rem; }
+.cons-tools { font-size: 1.3rem; color: var(--ink-muted); margin: 0; }
+/* a table that builds one row per press */
+.cases { display: grid; grid-template-columns: 6rem 1.3fr 1fr; gap: 0 2rem; font-size: 1.6rem; }
+.cases > div { display: contents; }
+.cases span { border-top: 0.07rem solid var(--frame); padding: .7rem 0; }
+.cases .n { font-family: var(--font-display); color: var(--blue); font-size: 2rem; }
+.cases .head span { border-top: 0; font-weight: 400; color: var(--ink-muted); font-size: 1.2rem; padding: 0 0 .3rem; }
+.lines4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+.lines4 .cap, .lines2 .cap { font-size: 1.5rem; color: var(--ink); text-align: center; margin-top: .4rem; }
+.lines4 .sub, .lines3 .sub, .lines2 .sub { font-size: 1.2rem; color: var(--ink-muted); text-align: center; margin: .2rem 0 0; }
+.lines2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; }
