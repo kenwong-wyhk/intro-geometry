@@ -12,9 +12,11 @@
      <div class="btns choice">                buttons where one at a time stays selected
      <div class="sheet"> + <button data-focus="top%,height%" data-sheet="id">
                                               moves a red frame over part of an image; "none" clears it
-     <body data-reading="lesson.html">        adds a link back to the reading version
+     <body data-reading="lesson.html">        adds a "Reading version" button in the top-left corner
 
-   Keys: Right, Space, PageDown, Enter = next. Left, PageUp = back. Home = first scene. F = full screen.
+   Moving on: scroll down or right (mouse wheel, trackpad, or a swipe on a touch screen) = next; scroll up or left = back.
+   One scroll gesture is one press, however long it lasts.
+   Keys: Right, Down, Space, PageDown, Enter = next. Left, Up, PageUp = back. Home = first scene. F = full screen.
    Most presentation clickers send PageDown and PageUp, so they work too. */
 (function () {
   "use strict";
@@ -120,21 +122,56 @@
     var reading = document.body.dataset.reading;
     if (reading) {
       var a = document.createElement("a");
-      a.href = reading; a.textContent = "Reading version";
-      nav.appendChild(a);
+      a.href = reading; a.textContent = "Reading version"; a.className = "live-reading";
+      document.body.appendChild(a);
     }
     nav.appendChild(where);
-    button("←", "Back", back); button("→", "Next", next); button("Full screen", "Full screen", fullscreen);
+    button("Full screen", "Full screen", fullscreen);
     document.body.appendChild(nav); document.body.appendChild(progress);
+    buildScroll();
     document.addEventListener("keydown", function (e) {
       var t = e.target.tagName;
       if (t === "INPUT" || t === "TEXTAREA" || t === "SELECT") return;
-      if (e.key === "ArrowRight" || e.key === "PageDown") { e.preventDefault(); next(); }
+      if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === "PageDown") { e.preventDefault(); next(); }
       else if (e.key === " " || e.key === "Enter") { if (t === "BUTTON" || t === "A") return; e.preventDefault(); next(); }
-      else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); back(); }
+      else if (e.key === "ArrowLeft" || e.key === "ArrowUp" || e.key === "PageUp") { e.preventDefault(); back(); }
       else if (e.key === "Home") go(0);
       else if (e.key === "f" || e.key === "F") fullscreen();
     });
+  }
+
+  /* Scrolling moves through the lesson: down or right = next, up or left = back.
+     A scroll gesture counts once. A trackpad keeps sending wheel events while the page "glides",
+     so after a move nothing more happens until the wheel has been quiet for a moment. */
+  function buildScroll() {
+    var small = window.matchMedia("(max-width: 800px)");   // there, scenes scroll like a normal page
+    var inScroller = function (t) { return t && t.closest && t.closest(".sheet, input, textarea, select"); };
+    var sum = 0, locked = false, quiet = null;
+    window.addEventListener("wheel", function (e) {
+      if (small.matches || e.ctrlKey || inScroller(e.target)) return;
+      e.preventDefault();
+      clearTimeout(quiet);
+      quiet = setTimeout(function () { locked = false; sum = 0; }, 220);
+      if (locked) return;
+      // sideways scrolling counts too (right = next, left = back): take whichever direction is stronger
+      var d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      sum += e.deltaMode === 1 ? d * 40 : d;
+      if (Math.abs(sum) < 40) return;
+      if (sum > 0) next(); else back();
+      locked = true; sum = 0;
+    }, { passive: false });
+    var y0 = null, x0 = 0;
+    window.addEventListener("touchstart", function (e) {
+      y0 = small.matches || e.touches.length !== 1 || inScroller(e.target) || (e.target.closest && e.target.closest("button, a, svg")) ? null : e.touches[0].clientY;
+      x0 = e.touches[0].clientX;
+    }, { passive: true });
+    window.addEventListener("touchend", function (e) {
+      if (y0 === null) return;
+      var dy = e.changedTouches[0].clientY - y0, dx = e.changedTouches[0].clientX - x0;
+      y0 = null;
+      var d = Math.abs(dx) > Math.abs(dy) ? dx : dy;   // swipe up or to the left = next, as when scrolling a page
+      if (d < -60) next(); else if (d > 60) back();
+    }, { passive: true });
   }
 
   /* ---------- Built-in parts ---------- */

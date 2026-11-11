@@ -10,12 +10,14 @@
 <!-- everything is served from this site: no third-party requests -->
 <link rel="stylesheet" href="css/fonts.css?v=18d89dea">
 <link rel="stylesheet" href="vendor/katex/katex.min.css?v=3f94e1b7">
-<link rel="stylesheet" href="live/live.css?v=a58df557">
+<link rel="stylesheet" href="live/live.css?v=7f277b95">
 <link rel="stylesheet" href="live/lesson.css?v=b744310b">
 <style>
 /* Styles for this lesson only. Shared lesson styles: live/lesson.css; the engine's: live/live.css. */
 #sweepSvg { max-height: 56vh; display: block; margin: 0 auto; }
 #compSvg { max-height: 40vh; display: block; width: 100%; }
+#par2Svg { max-height: 58vh; display: block; width: 100%; }
+#par2Svg text { font-family: "Times New Roman", Times, serif; font-style: italic; font-size: 40px; text-anchor: middle; dominant-baseline: central; fill: var(--ink); }
 #sweepSvg text, #compSvg text { font-family: var(--font-sans); text-anchor: middle; dominant-baseline: central; fill: var(--ink); }
 .sweep-name { height: 1.2em; margin: 0; }
 .sweep-range { height: 1.5em; margin: .2rem 0 0; font-size: 1.7rem; }
@@ -43,7 +45,7 @@
     <p class="kicker in" style="--i:5">F1 MATHEMATICS · CH5 INTRODUCTION TO GEOMETRY · SECTION 5.1</p>
     <h1 class="display huge in" style="--i:7">Basic Concepts in Geometry</h1>
     <p class="in" style="--i:9">Line segments, angles and how lines meet.</p>
-    <p class="kicker in" style="--i:14">Press → to begin</p>
+    <p class="kicker in" style="--i:14">Scroll down to begin</p>
   </div>
   <div class="foot bare"><h2></h2></div>
 </section>
@@ -138,7 +140,7 @@
         <p class="sweep-deg in" style="--i:2" id="swDeg">0°</p>
         <p class="display huge blue-text sweep-name in" style="--i:3" id="swName"></p>
         <p class="sweep-range in" style="--i:4" id="swRange"></p>
-        <p class="muted in" style="--i:5">Press → to turn the arm to the next type.</p>
+        <p class="muted in" style="--i:5">Scroll down to turn the arm to the next type.</p>
       </div>
     </div>
     <span id="swGo1" data-step="1" style="display:none"></span><span id="swGo2" data-step="2" style="display:none"></span><span id="swGo3" data-step="3" style="display:none"></span><span id="swGo4" data-step="4" style="display:none"></span><span id="swGo5" data-step="5" style="display:none"></span>
@@ -317,6 +319,22 @@
   <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.1 | Parallel, perpendicular</h2></div>
 </section>
 
+<!-- 18b A second pair of parallel lines takes double arrows (animation) -->
+<section class="scene" data-enter="par2">
+  <div class="body">
+    <div class="pair wide-fig">
+      <div class="in" style="--i:1"><svg id="par2Svg" viewBox="0 0 1000 500" role="img" aria-label="Lines AB and CD are parallel and carry single arrows. A second pair of parallel lines, PQ and RS, is drawn across them and takes double arrows"></svg></div>
+      <div class="stack">
+        <p class="q in" style="--i:2">$AB \parallel CD$. Two more lines are drawn, and they are parallel to each other.</p>
+        <p class="display blue-text in" style="--i:3;font-size:2.4rem;margin:0">How do we mark the new pair?</p>
+        <p class="q" data-step="1" id="par2Go">A second pair takes <strong>double arrows</strong>: $PQ \parallel RS$.</p>
+        <p class="note" data-step="2">Same arrows, same direction. $AB$ is <strong>not</strong> parallel to $PQ$: their arrows are different.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="where">F1 Ch5 Introduction to Geometry</span><h2>5.1 | A second pair</h2></div>
+</section>
+
 <!-- 19 Work: read the marks -->
 <section class="scene">
   <div class="body">
@@ -379,7 +397,7 @@
 <script src="js/demos.js?v=3dc25a41"></script>
 <script src="data/helpers.js?v=02530cf8"></script>
 <script src="data/s51.js?v=3b636010"></script>
-<script src="live/live.js?v=4d78ca3d"></script>
+<script src="live/live.js?v=f7602a1f"></script>
 <script src="live/lesson.js?v=ef6bdcf3"></script>
 <script>
 'use strict';
@@ -497,6 +515,49 @@ figInto('trapFigQ', practice('51-9').fig);
     pair1(0); run2++; p2 = marker.classList.contains('shown') ? 1 : 0; pair2(p2);
     await Live.wait(900, alive); if (!alive()) return;
     await Live.tween(1700, p => pair1(Live.ease(p)), alive);
+  });
+})();
+
+/* ---------- 5. Animation: a second pair of parallel lines ----------
+   On entering, PQ and RS are drawn across AB and CD. The line #par2Go (first press) brings in their double arrows. */
+(function () {
+  const svg = $('par2Svg');
+  const mk = (t, a, txt) => { const e = Live.svg(t, a, txt); svg.appendChild(e); return e; };
+  const at = (p, q, t) => [p[0] + (q[0] - p[0]) * t, p[1] + (q[1] - p[1]) * t];
+  const A = [120, 330], B = [720, 54], Cc = [280, 420], D = [880, 144];      // first pair
+  const P = [330, 440], Q = [450, 60], R = [500, 440], S = [620, 60];        // second pair
+  const line = (p, q, col) => mk('line', { x1: p[0], y1: p[1], x2: q[0], y2: q[1], stroke: col || 'var(--ink)', 'stroke-width': 5, 'stroke-linecap': 'round' });
+  // n arrowheads on pq, centred at t
+  function arrows(p, q, t, n, col) {
+    const g = mk('g', {}), len = Math.hypot(q[0] - p[0], q[1] - p[1]), u = [(q[0] - p[0]) / len, (q[1] - p[1]) / len], v = [-u[1], u[0]], c = at(p, q, t);
+    for (let i = 0; i < n; i++) {
+      const o = (i - (n - 1) / 2) * 26, tip = [c[0] + u[0] * (o + 11), c[1] + u[1] * (o + 11)];
+      const b1 = [tip[0] - u[0] * 24 + v[0] * 16, tip[1] - u[1] * 24 + v[1] * 16], b2 = [tip[0] - u[0] * 24 - v[0] * 16, tip[1] - u[1] * 24 - v[1] * 16];
+      g.appendChild(Live.svg('path', { d: `M${b1[0].toFixed(1)} ${b1[1].toFixed(1)} L${tip[0].toFixed(1)} ${tip[1].toFixed(1)} L${b2[0].toFixed(1)} ${b2[1].toFixed(1)}`, fill: 'none', stroke: col || 'var(--ink)', 'stroke-width': 5, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }));
+    }
+    return { g, u };
+  }
+  line(A, B); line(Cc, D);
+  arrows(A, B, .25, 1); arrows(Cc, D, .26, 1);
+  const pq = line(P, P, 'var(--blue)'), rs = line(R, R, 'var(--blue)');
+  const a1 = arrows(P, Q, .38, 2, 'var(--blue)'), a2 = arrows(R, S, .62, 2, 'var(--blue)');
+  [['A', A, -30, 14], ['B', B, 30, -12], ['C', Cc, -30, 14], ['D', D, 30, -12]].forEach(([L, p, dx, dy]) => mk('text', { x: p[0] + dx, y: p[1] + dy }, L));
+  const second = [['P', P, 8, 34], ['Q', Q, 8, -32], ['R', R, 8, 34], ['S', S, 8, -32]].map(([L, p, dx, dy]) => mk('text', { x: p[0] + dx, y: p[1] + dy, opacity: 0 }, L));
+  const drawn = t => {      // how much of the second pair is drawn
+    [[pq, P, Q], [rs, R, S]].forEach(([l, p, q]) => { const e = at(p, q, t); l.setAttribute('x2', e[0].toFixed(1)); l.setAttribute('y2', e[1].toFixed(1)); });
+    second.forEach((x, i) => x.setAttribute('opacity', i % 2 ? (t >= 1 ? 1 : 0) : (t > 0 ? 1 : 0)));
+  };
+  // the double arrows slide along their lines into place
+  let k = 0, run = 0;
+  const marks = t => { k = t; [a1, a2].forEach(a => { a.g.setAttribute('opacity', t); a.g.setAttribute('transform', `translate(${(-a.u[0] * 70 * (1 - t)).toFixed(1)} ${(-a.u[1] * 70 * (1 - t)).toFixed(1)})`); }); };
+  const marksTo = to => { const from = k, me = ++run; return Live.tween(900 * Math.abs(to - from) + 1, p => marks(from + (to - from) * Live.ease(p)), () => me === run); };
+  const go = $('par2Go'), want = () => (go.classList.contains('shown') ? 1 : 0);
+  drawn(0); marks(0);
+  new MutationObserver(() => { if (want() !== k) marksTo(want()); }).observe(go, { attributes: true, attributeFilter: ['class'] });
+  Live.onEnter('par2', async alive => {
+    run++; marks(want()); drawn(0);
+    await Live.wait(900, alive); if (!alive()) return;
+    await Live.tween(1600, p => drawn(Live.ease(p)), alive);
   });
 })();
 </script>

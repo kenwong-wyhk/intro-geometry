@@ -17,7 +17,7 @@ student's device (progress ticks are kept in that browser only). Built from the 
 | Traps | Trap Gallery — 24 common mistakes with "the trap" vs "do this" |
 | Challenge | 10 random questions from a pool of 30; Practice mode or 35-minute Test mode |
 | Revision sheet | Key points of the chapter on one printable page (`#/sheet`) |
-| Live lessons | `s51-live.html`: section 5.1 as full-screen scenes for teaching from the front (arrow keys or a clicker; F for full screen). Engine in `live/`. 5.2–5.4 follow after the 5.1 review. |
+| Live lessons | `s51-live.html`: section 5.1 as full-screen scenes for teaching from the front (scroll, arrow keys or a clicker; F for full screen). Engine in `live/`. 5.2–5.4 follow after the 5.1 review. |
 
 ## Files
 
